@@ -28,5 +28,11 @@
         "typo3/cms": {
             "extension-key": "account"
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        }
     }
 }

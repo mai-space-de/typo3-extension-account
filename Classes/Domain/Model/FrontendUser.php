@@ -4,11 +4,20 @@ declare(strict_types=1);
 
 namespace Maispace\Account\Domain\Model;
 
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUser as BaseFrontendUser;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class FrontendUser extends BaseFrontendUser
+class FrontendUser extends AbstractEntity
 {
+    // Standard fe_users fields
+    protected string $username = '';
+    protected string $password = '';
+    protected string $email = '';
+    protected string $firstName = '';
+    protected string $lastName = '';
+    protected string $name = '';
+    protected bool $disable = false;
+
     /**
      * @var ObjectStorage<Interest>
      */
@@ -32,13 +41,77 @@ class FrontendUser extends BaseFrontendUser
 
     public function __construct()
     {
-        parent::__construct();
         $this->interests = new ObjectStorage();
     }
 
-    public function initializeObject(): void
+    public function getUsername(): string
     {
-        $this->interests = new ObjectStorage();
+        return $this->username;
+    }
+
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function isDisabled(): bool
+    {
+        return $this->disable;
+    }
+
+    public function setDisable(bool $disable): void
+    {
+        $this->disable = $disable;
     }
 
     public function getInterests(): ObjectStorage
