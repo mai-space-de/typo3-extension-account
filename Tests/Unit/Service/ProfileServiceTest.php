@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Tests\Unit\Service;
+namespace Maispace\MaiAccount\Tests\Unit\Service;
 
-use Maispace\Account\Domain\Model\FrontendUser;
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
-use Maispace\Account\Event\InterestsUpdatedEvent;
-use Maispace\Account\Service\ProfileService;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Event\InterestsUpdatedEvent;
+use Maispace\MaiAccount\Service\ProfileService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\EventDispatcher\EventDispatcherInterface;

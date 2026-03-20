@@ -10,25 +10,25 @@
             <trans-unit id="fe_users.tab_security">
                 <source>Security (MFA)</source>
             </trans-unit>
-            <trans-unit id="fe_users.tx_account_member_ref">
+            <trans-unit id="fe_users.tx_maiaccount_member_ref">
                 <source>Member Reference</source>
             </trans-unit>
-            <trans-unit id="fe_users.tx_account_interests">
+            <trans-unit id="fe_users.tx_maiaccount_interests">
                 <source>Interests (comma-separated keys)</source>
             </trans-unit>
-            <trans-unit id="fe_users.tx_account_newsletter_optin">
+            <trans-unit id="fe_users.tx_maiaccount_newsletter_optin">
                 <source>Newsletter Opt-in</source>
             </trans-unit>
-            <trans-unit id="fe_users.tx_account_newsletter_optin_date">
+            <trans-unit id="fe_users.tx_maiaccount_newsletter_optin_date">
                 <source>Newsletter Opt-in Date</source>
             </trans-unit>
-            <trans-unit id="fe_users.tx_account_reminders_optin">
+            <trans-unit id="fe_users.tx_maiaccount_reminders_optin">
                 <source>Event Reminders Opt-in</source>
             </trans-unit>
-            <trans-unit id="fe_users.tx_account_email_confirmed">
+            <trans-unit id="fe_users.tx_maiaccount_email_confirmed">
                 <source>Email Confirmed</source>
             </trans-unit>
-            <trans-unit id="fe_users.tx_account_mfa_enabled">
+            <trans-unit id="fe_users.tx_maiaccount_mfa_enabled">
                 <source>MFA Enabled</source>
             </trans-unit>
         </body>

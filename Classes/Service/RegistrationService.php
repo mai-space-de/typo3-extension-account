@@ -162,8 +162,8 @@ class RegistrationService
     private function sendPasswordResetEmail(FrontendUser $user, string $resetPageUrl, string $token): void
     {
         $resetUrl = rtrim($resetPageUrl, '/')
-            . '?tx_account_login[token]=' . urlencode($token)
-            . '&tx_account_login[action]=passwordResetConfirm';
+            . '?tx_maiaccount_login[token]=' . urlencode($token)
+            . '&tx_maiaccount_login[action]=passwordResetConfirm';
 
         /** @var MailMessage $mail */
         $mail = GeneralUtility::makeInstance(MailMessage::class);

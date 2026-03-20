@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label for="tx-account-firstname">Vorname *</label>
                                 <f:form.textfield
-                                    name="tx_account_registration[firstName]"
+                                    name="tx_maiaccount_registration[firstName]"
                                     id="tx-account-firstname"
                                     class="form-control{f:if(condition: errors.firstName, then: ' is-invalid')}"
                                     required="required"
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label for="tx-account-lastname">Nachname *</label>
                                 <f:form.textfield
-                                    name="tx_account_registration[lastName]"
+                                    name="tx_maiaccount_registration[lastName]"
                                     id="tx-account-lastname"
                                     class="form-control{f:if(condition: errors.lastName, then: ' is-invalid')}"
                                     required="required"
@@ -62,7 +62,7 @@
                     <div class="form-group mt-3">
                         <label for="tx-account-email">E-Mail-Adresse *</label>
                         <f:form.textfield
-                            name="tx_account_registration[email]"
+                            name="tx_maiaccount_registration[email]"
                             id="tx-account-email"
                             class="form-control{f:if(condition: errors.email, then: ' is-invalid')}"
                             type="email"
@@ -79,7 +79,7 @@
                     <div class="form-group mt-3">
                         <label for="tx-account-password">Passwort *</label>
                         <f:form.password
-                            name="tx_account_registration[password]"
+                            name="tx_maiaccount_registration[password]"
                             id="tx-account-password"
                             class="form-control{f:if(condition: errors.password, then: ' is-invalid')}"
                             required="required"
@@ -94,7 +94,7 @@
                     <div class="form-group mt-3">
                         <label for="tx-account-password-repeat">Passwort wiederholen *</label>
                         <f:form.password
-                            name="tx_account_registration[passwordRepeat]"
+                            name="tx_maiaccount_registration[passwordRepeat]"
                             id="tx-account-password-repeat"
                             class="form-control{f:if(condition: errors.passwordRepeat, then: ' is-invalid')}"
                             required="required"
@@ -108,7 +108,7 @@
 
                     <div class="form-check mt-3">
                         <f:form.checkbox
-                            name="tx_account_registration[terms]"
+                            name="tx_maiaccount_registration[terms]"
                             id="tx-account-terms"
                             class="form-check-input{f:if(condition: errors.terms, then: ' is-invalid')}"
                             value="1"

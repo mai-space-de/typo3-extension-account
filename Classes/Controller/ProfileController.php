@@ -131,7 +131,7 @@ class ProfileController extends ActionController
      * Returns the configured list of available interests from TypoScript settings.
      *
      * Expected TypoScript format:
-     *   plugin.tx_account.settings.interests {
+     *   plugin.tx_maiaccount.settings.interests {
      *     culture = Kultur & Kunst
      *     sports = Sport & Bewegung
      *     ...

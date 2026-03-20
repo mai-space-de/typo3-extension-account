@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Tests\Unit\Service;
+namespace Maispace\MaiAccount\Tests\Unit\Service;
 
-use Maispace\Account\Domain\Model\FrontendUser;
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
-use Maispace\Account\Service\RegistrationService;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Service\RegistrationService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Crypto\Random;

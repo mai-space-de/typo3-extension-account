@@ -42,12 +42,12 @@
                         <p>Geben Sie den von der App generierten 6-stelligen Code ein, um die Einrichtung abzuschließen.</p>
 
                         <f:form action="verify" controller="Mfa" pluginName="Mfa" extensionName="account" method="post">
-                            <f:form.hidden name="tx_account_mfa[secret]" value="{secret}" />
+                            <f:form.hidden name="tx_maiaccount_mfa[secret]" value="{secret}" />
 
                             <div class="form-group">
                                 <label for="tx-account-totp-code">TOTP-Code</label>
                                 <f:form.textfield
-                                    name="tx_account_mfa[code]"
+                                    name="tx_maiaccount_mfa[code]"
                                     id="tx-account-totp-code"
                                     class="form-control"
                                     placeholder="123456"

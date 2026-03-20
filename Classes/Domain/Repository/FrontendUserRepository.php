@@ -9,9 +9,6 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-/**
- * @extends Repository<FrontendUser>
- */
 class FrontendUserRepository extends Repository
 {
     public function findByConfirmationToken(string $token): ?FrontendUser

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Task;
+namespace Maispace\MaiAccount\Task;
 
-use Maispace\Account\Service\ReminderService;
+use Maispace\MaiAccount\Service\ReminderService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Tests\Unit\Event;
+namespace Maispace\MaiAccount\Tests\Unit\Event;
 
-use Maispace\Account\Event\InterestsUpdatedEvent;
+use Maispace\MaiAccount\Event\InterestsUpdatedEvent;
 use PHPUnit\Framework\TestCase;
 
 class InterestsUpdatedEventTest extends TestCase

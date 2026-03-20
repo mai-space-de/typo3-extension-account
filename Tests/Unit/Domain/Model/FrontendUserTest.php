@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Tests\Unit\Domain\Model;
+namespace Maispace\MaiAccount\Tests\Unit\Domain\Model;
 
-use Maispace\Account\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
 use PHPUnit\Framework\TestCase;
 
 class FrontendUserTest extends TestCase

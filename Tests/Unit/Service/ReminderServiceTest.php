@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Tests\Unit\Service;
+namespace Maispace\MaiAccount\Tests\Unit\Service;
 
-use Maispace\Account\Domain\Model\FrontendUser;
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
-use Maispace\Account\Event\EventRegisteredEvent;
-use Maispace\Account\Service\ReminderService;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Event\EventRegisteredEvent;
+use Maispace\MaiAccount\Service\ReminderService;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Database\Connection;
@@ -98,7 +98,7 @@ class ReminderServiceTest extends TestCase
 
         $connection = $this->createMock(Connection::class);
         $connection->expects(self::once())->method('insert')->with(
-            'tx_account_reminder_queue',
+            'tx_maiaccount_reminder_queue',
             self::arrayHasKey('event_uid')
         );
 

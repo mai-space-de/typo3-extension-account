@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Service;
+namespace Maispace\MaiAccount\Service;
 
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
-use Maispace\Account\Event\EventRegisteredEvent;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Event\EventRegisteredEvent;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -20,7 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ReminderService
 {
-    private const TABLE = 'tx_account_reminder_queue';
+    private const TABLE = 'tx_maiaccount_reminder_queue';
 
     /**
      * Default lead time: send reminder 24 hours before the event.
@@ -84,7 +84,7 @@ class ReminderService
                 $queryBuilder->expr()->eq('r.deleted', 0),
                 $queryBuilder->expr()->eq('u.deleted', 0),
                 $queryBuilder->expr()->eq('u.disable', 0),
-                $queryBuilder->expr()->eq('u.tx_account_reminders_optin', 1),
+                $queryBuilder->expr()->eq('u.tx_maiaccount_reminders_optin', 1),
             )
             ->executeQuery()
             ->fetchAllAssociative();

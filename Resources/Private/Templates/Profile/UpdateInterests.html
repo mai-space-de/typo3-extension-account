@@ -22,7 +22,7 @@
                             <input
                                 type="checkbox"
                                 class="form-check-input"
-                                name="tx_account_profile[interests][]"
+                                name="tx_maiaccount_profile[interests][]"
                                 id="interest-{key}"
                                 value="{key}"
                                 <f:if condition="{userInterests -> f:array.contains(search: key)}">checked="checked"</f:if>
@@ -45,7 +45,7 @@
 
             <div class="form-check mb-3">
                 <f:form.checkbox
-                    name="tx_account_profile[newsletterOptin]"
+                    name="tx_maiaccount_profile[newsletterOptin]"
                     id="newsletter-optin"
                     class="form-check-input"
                     value="1"
@@ -58,7 +58,7 @@
 
             <div class="form-check mb-3">
                 <f:form.checkbox
-                    name="tx_account_profile[remindersOptin]"
+                    name="tx_maiaccount_profile[remindersOptin]"
                     id="reminders-optin"
                     class="form-check-input"
                     value="1"

@@ -11,7 +11,8 @@ defined('TYPO3') or die();
         ],
         [
             \Maispace\MaiAccount\Controller\LoginController::class => 'login, logout, passwordReset, passwordResetConfirm',
-        ]
+        ],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -22,7 +23,8 @@ defined('TYPO3') or die();
         ],
         [
             \Maispace\MaiAccount\Controller\RegistrationController::class => 'register, confirm',
-        ]
+        ],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -33,7 +35,8 @@ defined('TYPO3') or die();
         ],
         [
             \Maispace\MaiAccount\Controller\MfaController::class => 'setup, verify, backupCodes, disable',
-        ]
+        ],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -44,7 +47,8 @@ defined('TYPO3') or die();
         ],
         [
             \Maispace\MaiAccount\Controller\ProfileController::class => 'updateInterests, updateNewsletter, updateProfile',
-        ]
+        ],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     // Register Scheduler task for reminder emails
