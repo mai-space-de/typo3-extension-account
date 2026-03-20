@@ -1,0 +1,84 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="tx-account-mfa-setup">
+        <h1>Zwei-Faktor-Authentifizierung einrichten</h1>
+
+        <f:if condition="{alreadyEnabled}">
+            <f:then>
+                <div class="alert alert-info" role="alert">
+                    Die Zwei-Faktor-Authentifizierung ist bereits aktiviert.
+                </div>
+                <p>
+                    <f:link.action action="backupCodes" controller="Mfa" pluginName="Mfa" extensionName="account">
+                        Backup-Codes verwalten
+                    </f:link.action>
+                    |
+                    <f:link.action action="disable" controller="Mfa" pluginName="Mfa" extensionName="account">
+                        MFA deaktivieren
+                    </f:link.action>
+                </p>
+            </f:then>
+            <f:else>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Schritt 1: App scannen</h2>
+                        <p>Scannen Sie den QR-Code mit einer TOTP-App (z.B. Google Authenticator, Aegis, Bitwarden).</p>
+
+                        <div class="tx-account-mfa-qr" id="tx-account-mfa-qrcode"
+                             data-uri="{qrCodeUri}"
+                             style="width:200px;height:200px;background:#eee;display:flex;align-items:center;justify-content:center;">
+                            <span class="text-muted small">QR-Code</span>
+                        </div>
+
+                        <p class="mt-3">
+                            <strong>Manueller Schlüssel:</strong><br />
+                            <code class="user-select-all">{secret}</code>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h2>Schritt 2: Code eingeben</h2>
+                        <p>Geben Sie den von der App generierten 6-stelligen Code ein, um die Einrichtung abzuschließen.</p>
+
+                        <f:form action="verify" controller="Mfa" pluginName="Mfa" extensionName="account" method="post">
+                            <f:form.hidden name="tx_account_mfa[secret]" value="{secret}" />
+
+                            <div class="form-group">
+                                <label for="tx-account-totp-code">TOTP-Code</label>
+                                <f:form.textfield
+                                    name="tx_account_mfa[code]"
+                                    id="tx-account-totp-code"
+                                    class="form-control"
+                                    placeholder="123456"
+                                    maxlength="6"
+                                    pattern="[0-9]{6}"
+                                    inputmode="numeric"
+                                    autocomplete="one-time-code"
+                                    required="required"
+                                />
+                            </div>
+
+                            <div class="mt-3">
+                                <f:form.submit value="MFA aktivieren" class="btn btn-primary" />
+                            </div>
+                        </f:form>
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
+
+        <script>
+        (function() {
+            var el = document.getElementById('tx-account-mfa-qrcode');
+            if (el && el.dataset.uri) {
+                // QR code rendering requires a JS library (e.g. qrcodejs) included in the site package.
+                if (typeof QRCode !== 'undefined') {
+                    el.innerHTML = '';
+                    new QRCode(el, { text: el.dataset.uri, width: 200, height: 200 });
+                }
+            }
+        })();
+        </script>
+    </div>
+</f:section>
