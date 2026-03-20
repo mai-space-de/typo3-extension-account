@@ -1,0 +1,59 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Maispace\Account\:
+    resource: '../Classes/*'
+
+  # --- Controllers (must be public for Extbase) ---
+
+  Maispace\Account\Controller\LoginController:
+    public: true
+    tags:
+      - name: 'controller.argument_value_resolver'
+
+  Maispace\Account\Controller\RegistrationController:
+    public: true
+
+  Maispace\Account\Controller\MfaController:
+    public: true
+
+  Maispace\Account\Controller\ProfileController:
+    public: true
+
+  # --- Repositories ---
+
+  Maispace\Account\Domain\Repository\FrontendUserRepository:
+    public: true
+    arguments:
+      $objectType: 'Maispace\Account\Domain\Model\FrontendUser'
+
+  # --- Services ---
+
+  Maispace\Account\Service\RegistrationService:
+    public: true
+
+  Maispace\Account\Service\MfaService:
+    public: true
+
+  Maispace\Account\Service\ProfileService:
+    public: true
+
+  Maispace\Account\Service\ReminderService:
+    public: true
+
+  # --- Scheduler Task ---
+
+  Maispace\Account\Task\SendRemindersTask:
+    public: true
+
+  # --- PSR-14 Event Listeners ---
+
+  Maispace\Account\Service\ReminderService:
+    tags:
+      - name: 'event.listener'
+        identifier: 'maispace/account/reminder-on-event-registered'
+        event: 'Maispace\Account\Event\EventRegisteredEvent'
+        method: 'onEventRegistered'

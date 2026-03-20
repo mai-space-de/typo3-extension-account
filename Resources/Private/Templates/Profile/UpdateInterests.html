@@ -1,0 +1,81 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="tx-account-interests">
+        <h1>Interessen &amp; Newsletter-Einstellungen</h1>
+
+        <f:if condition="{updated}">
+            <div class="alert alert-success" role="alert">
+                Ihre Einstellungen wurden gespeichert.
+            </div>
+        </f:if>
+
+        <f:form action="updateInterests" controller="Profile" pluginName="Profile" extensionName="account" method="post">
+
+            <h2>Meine Interessen</h2>
+            <p>Wählen Sie Ihre Interessengebiete aus. Diese helfen uns, relevante Inhalte für Sie bereitzustellen.</p>
+
+            <div class="row">
+                <f:for each="{availableInterests}" as="label" key="key">
+                    <div class="col-md-4 mb-2">
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                name="tx_account_profile[interests][]"
+                                id="interest-{key}"
+                                value="{key}"
+                                <f:if condition="{userInterests -> f:array.contains(search: key)}">checked="checked"</f:if>
+                            />
+                            <label class="form-check-label" for="interest-{key}">{label}</label>
+                        </div>
+                    </div>
+                </f:for>
+            </div>
+
+            <div class="mt-4">
+                <f:form.submit value="Interessen speichern" class="btn btn-primary" />
+            </div>
+        </f:form>
+
+        <hr />
+
+        <f:form action="updateNewsletter" controller="Profile" pluginName="Profile" extensionName="account" method="post">
+            <h2>E-Mail-Benachrichtigungen</h2>
+
+            <div class="form-check mb-3">
+                <f:form.checkbox
+                    name="tx_account_profile[newsletterOptin]"
+                    id="newsletter-optin"
+                    class="form-check-input"
+                    value="1"
+                    checked="{user.newsletterOptin}"
+                />
+                <label class="form-check-label" for="newsletter-optin">
+                    Newsletter abonnieren (Neuigkeiten, Veranstaltungen, Angebote)
+                </label>
+            </div>
+
+            <div class="form-check mb-3">
+                <f:form.checkbox
+                    name="tx_account_profile[remindersOptin]"
+                    id="reminders-optin"
+                    class="form-check-input"
+                    value="1"
+                    checked="{user.remindersOptin}"
+                />
+                <label class="form-check-label" for="reminders-optin">
+                    Erinnerungs-E-Mails für angemeldete Veranstaltungen erhalten
+                </label>
+            </div>
+
+            <f:form.submit value="Einstellungen speichern" class="btn btn-primary" />
+        </f:form>
+
+        <p class="mt-3">
+            <f:link.action action="dashboard" controller="Profile" pluginName="Profile" extensionName="account">
+                &larr; Zurück zum Profil
+            </f:link.action>
+        </p>
+    </div>
+</f:section>

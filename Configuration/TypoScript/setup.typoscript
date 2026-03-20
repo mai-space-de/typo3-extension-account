@@ -1,0 +1,48 @@
+plugin.tx_account {
+    view {
+        templateRootPaths {
+            0 = EXT:account/Resources/Private/Templates/
+            10 = {$plugin.tx_account.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:account/Resources/Private/Partials/
+            10 = {$plugin.tx_account.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:account/Resources/Private/Layouts/
+            10 = {$plugin.tx_account.view.layoutRootPath}
+        }
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_account.persistence.storagePid}
+    }
+
+    settings {
+        # Page UID where fe_users are stored
+        storagePid = {$plugin.tx_account.persistence.storagePid}
+
+        # UID of the default fe_groups group for new registrations
+        defaultUserGroup = {$plugin.tx_account.settings.defaultUserGroup}
+
+        # Issuer name shown in authenticator apps
+        mfaIssuer = {$plugin.tx_account.settings.mfaIssuer}
+
+        # Link to terms & conditions page
+        termsPage = {$plugin.tx_account.settings.termsPage}
+
+        # Available interest categories (key = identifier, value = label)
+        interests {
+            culture = Kultur & Kunst
+            sports = Sport & Bewegung
+            technology = Technologie & Innovation
+            community = Gemeinschaft & Ehrenamt
+            education = Bildung & Weiterbildung
+            nature = Natur & Umwelt
+        }
+    }
+}
+
+# Allow GET parameter passthrough for token-based actions
+plugin.tx_account_registration.settings.allowedActions = confirm
+plugin.tx_account_login.settings.allowedActions = passwordResetConfirm
