@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Domain\Repository;
+namespace Maispace\MaiAccount\Domain\Repository;
 
-use Maispace\Account\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Repository;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Controller;
+namespace Maispace\MaiAccount\Controller;
 
-use Maispace\Account\Domain\Model\FrontendUser;
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
-use Maispace\Account\Service\ProfileService;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Service\ProfileService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
@@ -48,7 +48,7 @@ class ProfileController extends ActionController
         $availableInterests = $this->getAvailableInterests();
 
         if ($this->request->getMethod() === 'POST') {
-            $body = $this->request->getParsedBody()['tx_account_profile'] ?? [];
+            $body = $this->request->getParsedBody()['tx_maiaccount_profile'] ?? [];
             $selectedInterests = (array)($body['interests'] ?? []);
 
             $this->profileService->updateInterests($user, $selectedInterests);
@@ -75,7 +75,7 @@ class ProfileController extends ActionController
         }
 
         if ($this->request->getMethod() === 'POST') {
-            $body = $this->request->getParsedBody()['tx_account_profile'] ?? [];
+            $body = $this->request->getParsedBody()['tx_maiaccount_profile'] ?? [];
 
             $newsletterOptin = !empty($body['newsletterOptin']);
             $remindersOptin = !empty($body['remindersOptin']);
@@ -102,7 +102,7 @@ class ProfileController extends ActionController
         }
 
         if ($this->request->getMethod() === 'POST') {
-            $body = $this->request->getParsedBody()['tx_account_profile'] ?? [];
+            $body = $this->request->getParsedBody()['tx_maiaccount_profile'] ?? [];
 
             $allowedFields = ['firstName', 'lastName', 'telephone', 'address', 'zip', 'city'];
             $data = array_intersect_key($body, array_flip($allowedFields));

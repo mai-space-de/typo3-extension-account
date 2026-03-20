@@ -4,52 +4,52 @@ defined('TYPO3') or die();
 
 (static function (): void {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'account',
+        'mai_account',
         'Login',
         [
-            \Maispace\Account\Controller\LoginController::class => 'index, login, logout, passwordReset, passwordResetConfirm',
+            \Maispace\MaiAccount\Controller\LoginController::class => 'index, login, logout, passwordReset, passwordResetConfirm',
         ],
         [
-            \Maispace\Account\Controller\LoginController::class => 'login, logout, passwordReset, passwordResetConfirm',
+            \Maispace\MaiAccount\Controller\LoginController::class => 'login, logout, passwordReset, passwordResetConfirm',
         ]
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'account',
+        'mai_account',
         'Registration',
         [
-            \Maispace\Account\Controller\RegistrationController::class => 'index, register, confirm',
+            \Maispace\MaiAccount\Controller\RegistrationController::class => 'index, register, confirm',
         ],
         [
-            \Maispace\Account\Controller\RegistrationController::class => 'register, confirm',
+            \Maispace\MaiAccount\Controller\RegistrationController::class => 'register, confirm',
         ]
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'account',
+        'mai_account',
         'Mfa',
         [
-            \Maispace\Account\Controller\MfaController::class => 'setup, verify, backupCodes, disable',
+            \Maispace\MaiAccount\Controller\MfaController::class => 'setup, verify, backupCodes, disable',
         ],
         [
-            \Maispace\Account\Controller\MfaController::class => 'setup, verify, backupCodes, disable',
+            \Maispace\MaiAccount\Controller\MfaController::class => 'setup, verify, backupCodes, disable',
         ]
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'account',
+        'mai_account',
         'Profile',
         [
-            \Maispace\Account\Controller\ProfileController::class => 'dashboard, updateInterests, updateNewsletter, updateProfile',
+            \Maispace\MaiAccount\Controller\ProfileController::class => 'dashboard, updateInterests, updateNewsletter, updateProfile',
         ],
         [
-            \Maispace\Account\Controller\ProfileController::class => 'updateInterests, updateNewsletter, updateProfile',
+            \Maispace\MaiAccount\Controller\ProfileController::class => 'updateInterests, updateNewsletter, updateProfile',
         ]
     );
 
     // Register Scheduler task for reminder emails
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Maispace\Account\Task\SendRemindersTask::class] = [
-        'extension' => 'account',
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Maispace\MaiAccount\Task\SendRemindersTask::class] = [
+        'extension' => 'mai_account',
         'title' => 'maispace Account: Send Event Reminders',
         'description' => 'Sends reminder emails to users who opted in for event reminders.',
         'additionalFields' => '',

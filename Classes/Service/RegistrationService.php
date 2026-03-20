@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Service;
+namespace Maispace\MaiAccount\Service;
 
-use Maispace\Account\Domain\Model\FrontendUser;
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -137,8 +137,8 @@ class RegistrationService
     private function sendConfirmationEmail(FrontendUser $user, string $confirmationPageUrl): void
     {
         $confirmationUrl = rtrim($confirmationPageUrl, '/')
-            . '?tx_account_registration[token]=' . urlencode($user->getConfirmationToken())
-            . '&tx_account_registration[action]=confirm';
+            . '?tx_maiaccount_registration[token]=' . urlencode($user->getConfirmationToken())
+            . '&tx_maiaccount_registration[action]=confirm';
 
         /** @var MailMessage $mail */
         $mail = GeneralUtility::makeInstance(MailMessage::class);

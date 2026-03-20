@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Controller;
+namespace Maispace\MaiAccount\Controller;
 
-use Maispace\Account\Service\RegistrationService;
+use Maispace\MaiAccount\Service\RegistrationService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
@@ -36,7 +36,7 @@ class RegistrationController extends ActionController
      */
     public function registerAction(): ResponseInterface
     {
-        $data = $this->request->getParsedBody()['tx_account_registration'] ?? [];
+        $data = $this->request->getParsedBody()['tx_maiaccount_registration'] ?? [];
 
         $errors = $this->validateRegistrationData($data);
 
@@ -53,7 +53,7 @@ class RegistrationController extends ActionController
         $confirmationPageUrl = $this->uriBuilder
             ->reset()
             ->setCreateAbsoluteUri(true)
-            ->uriFor('confirm', [], 'Registration', 'account', 'Registration');
+            ->uriFor('confirm', [], 'Registration', 'mai_account', 'Registration');
 
         $data['confirmationPageUrl'] = $confirmationPageUrl;
 
@@ -72,7 +72,7 @@ class RegistrationController extends ActionController
      */
     public function confirmAction(): ResponseInterface
     {
-        $token = trim((string)($this->request->getQueryParams()['tx_account_registration']['token'] ?? ''));
+        $token = trim((string)($this->request->getQueryParams()['tx_maiaccount_registration']['token'] ?? ''));
 
         if ($token === '') {
             $this->view->assign('invalidToken', true);

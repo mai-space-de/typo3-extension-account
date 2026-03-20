@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Service;
+namespace Maispace\MaiAccount\Service;
 
-use Maispace\Account\Domain\Model\FrontendUser;
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
-use Maispace\Account\Event\InterestsUpdatedEvent;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Event\InterestsUpdatedEvent;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 

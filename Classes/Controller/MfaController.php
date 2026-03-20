@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Controller;
+namespace Maispace\MaiAccount\Controller;
 
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
-use Maispace\Account\Service\MfaService;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Service\MfaService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
@@ -40,7 +40,7 @@ class MfaController extends ActionController
         $totp = $this->mfaService->initSetup($user, $issuer);
         $secret = $totp->getSecret();
 
-        $_SESSION['tx_account_mfa_setup_secret'] = $secret;
+        $_SESSION['tx_maiaccount_mfa_setup_secret'] = $secret;
 
         $this->view->assignMultiple([
             'secret' => $secret,
@@ -61,11 +61,11 @@ class MfaController extends ActionController
             return $this->redirect('index', 'Login');
         }
 
-        $body = $this->request->getParsedBody()['tx_account_mfa'] ?? [];
+        $body = $this->request->getParsedBody()['tx_maiaccount_mfa'] ?? [];
         $code = trim((string)($body['code'] ?? ''));
 
         // Pending MFA after login
-        $pendingUid = $_SESSION['tx_account_mfa_pending_uid'] ?? null;
+        $pendingUid = $_SESSION['tx_maiaccount_mfa_pending_uid'] ?? null;
         if ($pendingUid !== null) {
             $pendingUid = (int)$pendingUid;
             $pendingUser = $this->frontendUserRepository->findByUid($pendingUid);
@@ -76,7 +76,7 @@ class MfaController extends ActionController
 
             if ($this->mfaService->verifyMfa($pendingUser, $code)
                 || $this->mfaService->verifyBackupCode($pendingUser, $code)) {
-                unset($_SESSION['tx_account_mfa_pending_uid']);
+                unset($_SESSION['tx_maiaccount_mfa_pending_uid']);
                 return $this->redirect('dashboard', 'Profile');
             }
 
@@ -85,14 +85,14 @@ class MfaController extends ActionController
         }
 
         // MFA setup flow
-        $secret = (string)($_SESSION['tx_account_mfa_setup_secret'] ?? '');
+        $secret = (string)($_SESSION['tx_maiaccount_mfa_setup_secret'] ?? '');
         if ($secret === '') {
             return $this->redirect('setup');
         }
 
         if ($this->mfaService->verifyCode($secret, $code)) {
             $backupCodes = $this->mfaService->enableMfa($user, $secret);
-            unset($_SESSION['tx_account_mfa_setup_secret']);
+            unset($_SESSION['tx_maiaccount_mfa_setup_secret']);
 
             $this->view->assignMultiple([
                 'mfaEnabled' => true,
@@ -152,7 +152,7 @@ class MfaController extends ActionController
         return $this->htmlResponse();
     }
 
-    private function getCurrentUser(): ?\Maispace\Account\Domain\Model\FrontendUser
+    private function getCurrentUser(): ?\Maispace\MaiAccount\Domain\Model\FrontendUser
     {
         $isLoggedIn = $this->context->getPropertyFromAspect('frontend.user', 'isLoggedIn', false);
         if (!$isLoggedIn) {

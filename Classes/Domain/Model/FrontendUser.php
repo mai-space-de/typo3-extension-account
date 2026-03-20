@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Domain\Model;
+namespace Maispace\MaiAccount\Domain\Model;
 
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser as BaseFrontendUser;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Controller;
+namespace Maispace\MaiAccount\Controller;
 
-use Maispace\Account\Service\MfaService;
-use Maispace\Account\Service\RegistrationService;
+use Maispace\MaiAccount\Service\MfaService;
+use Maispace\MaiAccount\Service\RegistrationService;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Psr\Http\Message\ResponseInterface;
@@ -47,7 +47,7 @@ class LoginController extends ActionController
             $userId = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
 
             // Check if MFA verification is still pending (set by MFA interception hook)
-            if (isset($_SESSION['tx_account_mfa_pending_uid']) && $_SESSION['tx_account_mfa_pending_uid'] === $userId) {
+            if (isset($_SESSION['tx_maiaccount_mfa_pending_uid']) && $_SESSION['tx_maiaccount_mfa_pending_uid'] === $userId) {
                 return $this->redirect('verify', 'Mfa');
             }
 
@@ -72,13 +72,13 @@ class LoginController extends ActionController
     public function passwordResetAction(): ResponseInterface
     {
         if ($this->request->getMethod() === 'POST') {
-            $email = trim((string)($this->request->getParsedBody()['tx_account_login']['email'] ?? ''));
+            $email = trim((string)($this->request->getParsedBody()['tx_maiaccount_login']['email'] ?? ''));
 
             if ($email !== '') {
                 $resetPageUrl = $this->uriBuilder
                     ->reset()
                     ->setCreateAbsoluteUri(true)
-                    ->uriFor('passwordResetConfirm', [], 'Login', 'account', 'Login');
+                    ->uriFor('passwordResetConfirm', [], 'Login', 'mai_account', 'Login');
 
                 $this->registrationService->initiatePasswordReset($email, $resetPageUrl);
             }
@@ -94,7 +94,7 @@ class LoginController extends ActionController
      */
     public function passwordResetConfirmAction(): ResponseInterface
     {
-        $token = trim((string)($this->request->getQueryParams()['tx_account_login']['token'] ?? ''));
+        $token = trim((string)($this->request->getQueryParams()['tx_maiaccount_login']['token'] ?? ''));
 
         if ($token === '') {
             $this->view->assign('invalidToken', true);
@@ -102,7 +102,7 @@ class LoginController extends ActionController
         }
 
         if ($this->request->getMethod() === 'POST') {
-            $body = $this->request->getParsedBody()['tx_account_login'] ?? [];
+            $body = $this->request->getParsedBody()['tx_maiaccount_login'] ?? [];
             $newPassword = (string)($body['password'] ?? '');
             $newPasswordRepeat = (string)($body['passwordRepeat'] ?? '');
 

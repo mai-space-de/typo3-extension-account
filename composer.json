@@ -1,5 +1,5 @@
 {
-    "name": "maispace/account",
+    "name": "maispace/mai-account",
     "description": "TYPO3 FE-User extension: Login, Registration, MFA, Profile management with interests, newsletter opt-in, reminders and member reference",
     "type": "typo3-cms-extension",
     "license": "GPL-2.0-or-later",
@@ -25,17 +25,17 @@
     },
     "autoload": {
         "psr-4": {
-            "Maispace\\Account\\": "Classes/"
+            "Maispace\\MaiAccount\\": "Classes/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Maispace\\Account\\Tests\\": "Tests/"
+            "Maispace\\MaiAccount\\Tests\\": "Tests/"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "account"
+            "extension-key": "mai_account"
         }
     },
     "config": {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Service;
+namespace Maispace\MaiAccount\Service;
 
-use Maispace\Account\Domain\Model\FrontendUser;
-use Maispace\Account\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Domain\Model\FrontendUser;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
 use TYPO3\CMS\Core\Crypto\Random;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 use OTPHP\TOTP;

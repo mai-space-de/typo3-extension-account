@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Maispace\Account\Event;
+namespace Maispace\MaiAccount\Event;
 
 /**
  * PSR-14 event dispatched when a frontend user updates their interests.
