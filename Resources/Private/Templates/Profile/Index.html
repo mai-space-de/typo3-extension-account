@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="tx-account-profile">
+        <h2>Profil-Dashboard</h2>
+        <p>Willkommen, {user.firstName} {user.lastName}!</p>
+        <ul class="list-unstyled">
+            <li><f:link.action action="edit">Profil bearbeiten</f:link.action></li>
+            <li><f:link.action action="interests">Interessen verwalten</f:link.action></li>
+            <li><f:link.action action="index" controller="Mfa">Zwei-Faktor-Authentifizierung</f:link.action></li>
+        </ul>
+        <dl>
+            <dt>Benutzername</dt>
+            <dd>{user.username}</dd>
+            <dt>E-Mail</dt>
+            <dd>{user.email}</dd>
+            <dt>Mitglieds-Referenz</dt>
+            <dd>{user.memberReference}</dd>
+            <dt>Newsletter</dt>
+            <dd><f:if condition="{user.newsletterOptin}"><f:then>Ja</f:then><f:else>Nein</f:else></f:if></dd>
+            <dt>Termin-Erinnerungen</dt>
+            <dd><f:if condition="{user.reminderEnabled}"><f:then>Ja</f:then><f:else>Nein</f:else></f:if></dd>
+        </dl>
+    </div>
+</f:section>
+</html>

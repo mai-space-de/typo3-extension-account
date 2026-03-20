@@ -1,0 +1,18 @@
+plugin.tx_account {
+    settings {
+        loginRedirectPid = 0
+        logoutRedirectPid = 0
+        registrationPid = 0
+        profilePid = 0
+        confirmationPid = 0
+        mfaPid = 0
+        storagePid = 0
+        emailSenderAddress = noreply@example.com
+        emailSenderName = Account
+    }
+    view {
+        templateRootPath =
+        partialRootPath =
+        layoutRootPath =
+    }
+}

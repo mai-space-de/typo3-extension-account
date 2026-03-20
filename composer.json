@@ -1,0 +1,32 @@
+{
+    "name": "maispace/account",
+    "description": "TYPO3 FE-User extension: Login, Registration, MFA, Profile",
+    "type": "typo3-cms-extension",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^12.4",
+        "typo3/cms-extbase": "^12.4",
+        "typo3/cms-fluid": "^12.4",
+        "typo3/cms-frontend": "^12.4",
+        "spomky-labs/otphp": "^11.0"
+    },
+    "require-dev": {
+        "typo3/testing-framework": "^8.0",
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maispace\\Account\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Maispace\\Account\\Tests\\": "Tests/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "account"
+        }
+    }
+}

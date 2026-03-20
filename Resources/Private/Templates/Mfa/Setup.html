@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="tx-account-mfa-setup">
+        <h2>MFA einrichten</h2>
+        <f:if condition="{mfaEnabled}">
+            <f:then>
+                <div class="alert alert-success">
+                    <h3>MFA erfolgreich aktiviert!</h3>
+                    <p>Bewahre diese Backup-Codes sicher auf. Sie werden nur einmal angezeigt:</p>
+                    <ul>
+                        <f:for each="{backupCodes}" as="code">
+                            <li><code>{code}</code></li>
+                        </f:for>
+                    </ul>
+                </div>
+            </f:then>
+            <f:else>
+                <f:if condition="{error}">
+                    <div class="alert alert-danger">{error}</div>
+                </f:if>
+                <p>Scanne den QR-Code mit deiner Authenticator-App:</p>
+                <p>Secret: <code>{setupData.secret}</code></p>
+                <f:form action="setup" method="post">
+                    <f:form.hidden name="secret" value="{setupData.secret}" />
+                    <div class="form-group">
+                        <label for="code">Bestätigungscode aus der App</label>
+                        <f:form.textfield id="code" name="code" class="form-control" required="required" autocomplete="one-time-code" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">MFA aktivieren</button>
+                </f:form>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</html>

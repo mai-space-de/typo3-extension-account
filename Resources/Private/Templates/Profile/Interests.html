@@ -1,0 +1,23 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="tx-account-interests">
+        <h2>Interessen verwalten</h2>
+        <f:form action="updateInterests" method="post">
+            <f:for each="{allInterests}" as="interest">
+                <div class="form-check">
+                    <input
+                        type="checkbox"
+                        id="interest-{interest.uid}"
+                        name="tx_account_profile[interests][]"
+                        value="{interest.uid}"
+                        class="form-check-input"
+                    />
+                    <label for="interest-{interest.uid}" class="form-check-label">{interest.title}</label>
+                </div>
+            </f:for>
+            <button type="submit" class="btn btn-primary">Speichern</button>
+        </f:form>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="tx-account-profile-edit">
+        <h2>Profil bearbeiten</h2>
+        <f:form action="update" method="post">
+            <div class="form-group">
+                <label for="firstName">Vorname</label>
+                <f:form.textfield id="firstName" name="firstName" value="{user.firstName}" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Nachname</label>
+                <f:form.textfield id="lastName" name="lastName" value="{user.lastName}" class="form-control" />
+            </div>
+            <div class="form-group form-check">
+                <f:form.checkbox id="newsletterOptin" name="newsletterOptin" value="1" checked="{user.newsletterOptin}" class="form-check-input" />
+                <label for="newsletterOptin" class="form-check-label">Newsletter abonnieren</label>
+            </div>
+            <div class="form-group form-check">
+                <f:form.checkbox id="reminderEnabled" name="reminderEnabled" value="1" checked="{user.reminderEnabled}" class="form-check-input" />
+                <label for="reminderEnabled" class="form-check-label">Termin-Erinnerungen aktivieren</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Speichern</button>
+        </f:form>
+    </div>
+</f:section>
+</html>

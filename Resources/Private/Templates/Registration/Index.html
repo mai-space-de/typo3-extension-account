@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="tx-account-registration">
+        <h2>Registrierung</h2>
+        <f:if condition="{success}">
+            <f:then>
+                <div class="alert alert-success">
+                    Registrierung erfolgreich! Bitte bestätige deine E-Mail-Adresse.
+                </div>
+            </f:then>
+            <f:else>
+                <f:if condition="{error}">
+                    <div class="alert alert-danger">{error}</div>
+                </f:if>
+                <f:form action="register" method="post">
+                    <div class="form-group">
+                        <label for="firstName">Vorname</label>
+                        <f:form.textfield id="firstName" name="firstName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Nachname</label>
+                        <f:form.textfield id="lastName" name="lastName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Benutzername *</label>
+                        <f:form.textfield id="username" name="username" class="form-control" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail-Adresse *</label>
+                        <f:form.textfield id="email" name="email" type="email" class="form-control" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Passwort *</label>
+                        <f:form.password id="password" name="password" class="form-control" required="required" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrieren</button>
+                </f:form>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</html>

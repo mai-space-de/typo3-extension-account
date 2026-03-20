@@ -1,0 +1,27 @@
+plugin.tx_account {
+    settings {
+        loginRedirectPid = {$plugin.tx_account.settings.loginRedirectPid}
+        logoutRedirectPid = {$plugin.tx_account.settings.logoutRedirectPid}
+        registrationPid = {$plugin.tx_account.settings.registrationPid}
+        profilePid = {$plugin.tx_account.settings.profilePid}
+        confirmationPid = {$plugin.tx_account.settings.confirmationPid}
+        mfaPid = {$plugin.tx_account.settings.mfaPid}
+        storagePid = {$plugin.tx_account.settings.storagePid}
+        emailSenderAddress = {$plugin.tx_account.settings.emailSenderAddress}
+        emailSenderName = {$plugin.tx_account.settings.emailSenderName}
+    }
+    view {
+        templateRootPaths {
+            0 = EXT:account/Resources/Private/Templates/
+            10 = {$plugin.tx_account.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:account/Resources/Private/Partials/
+            10 = {$plugin.tx_account.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:account/Resources/Private/Layouts/
+            10 = {$plugin.tx_account.view.layoutRootPath}
+        }
+    }
+}

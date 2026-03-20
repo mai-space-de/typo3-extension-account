@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Content">
+    <div class="tx-account-confirm">
+        <f:if condition="{success}">
+            <f:then>
+                <div class="alert alert-success">
+                    <h2>E-Mail bestätigt</h2>
+                    <p>Deine E-Mail-Adresse wurde erfolgreich bestätigt. Du kannst dich jetzt anmelden.</p>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="alert alert-danger">
+                    <h2>Ungültiger Link</h2>
+                    <p>Der Bestätigungslink ist ungültig oder bereits abgelaufen.</p>
+                </div>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</html>
