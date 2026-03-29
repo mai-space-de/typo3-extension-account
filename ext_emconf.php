@@ -1,21 +1,15 @@
 <?php
-
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'maispace Account',
-    'description' => 'FE-User extension with Login, Registration, MFA (TOTP), Profile management, interests, newsletter opt-in, reminders and member reference.',
-    'category' => 'plugin',
-    'author' => 'maispace',
+    'title' => 'Mai Account',
+    'description' => 'Frontend user extension providing login, registration, MFA, and full profile management including interests and reminders. Extends the TYPO3 core `felogin` plugin with MFA, registration, and profile features. Newsletter opt-in is a UI entry point only — subscriber records are owned by `mai_newsletter`.',
+    'category' => 'module',
+    'author' => 'Maispace',
     'author_email' => '',
-    'author_company' => 'maispace',
     'state' => 'stable',
     'version' => '1.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-12.99.99',
-            'extbase' => '12.4.0-12.99.99',
-            'fluid' => '12.4.0-12.99.99',
-            'frontend' => '12.4.0-12.99.99',
-            'scheduler' => '12.4.0-12.99.99',
+            'typo3' => '13.4.0-14.99.99',
         ],
         'conflicts' => [],
         'suggests' => [],
