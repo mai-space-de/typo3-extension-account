@@ -5,7 +5,7 @@
 
 Frontend user extension providing login, registration, MFA, and full profile management including interests and reminders. Extends the TYPO3 core `felogin` plugin with MFA, registration, and profile features. Newsletter opt-in is a UI entry point only — subscriber records are owned by `mai_newsletter`.
 
-**Requires:** TYPO3 13.4 LTS / 14.0 · PHP 8.2+
+**Requires:** TYPO3 13.4 LTS / 14.1 · PHP 8.2+
 
 ---
 
