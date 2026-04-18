@@ -15,13 +15,12 @@ return (new Table($lang('table.tx_maiaccount_reminder')))
     ->setDefaultConfig()
     ->setLabel('title')
     ->setAlternativeLabelFields('remind_at')
-    ->setSearchFields('title, message')
     ->setIconFile('EXT:mai_account/Resources/Public/Icons/tx_maiaccount_reminder.svg')
     ->setDefaultSorting('ORDER BY remind_at ASC')
     ->addColumn(
         'title',
         $lang('tx_maiaccount_reminder.title'),
-        (new InputConfig())->setSize(50)->setMax(255)->setEval('trim,required')
+        (new InputConfig())->setSize(50)->setMax(255)->setEval('trim')->setRequired()
     )
     ->addColumn(
         'message',

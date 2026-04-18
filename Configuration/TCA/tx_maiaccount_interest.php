@@ -12,13 +12,12 @@ $lang = Helper::localLangHelperFactory('mai_account', 'Default/locallang_tca.xlf
 return (new Table($lang('table.tx_maiaccount_interest')))
     ->setDefaultConfig()
     ->setLabel('title')
-    ->setSearchFields('title, identifier')
     ->setIconFile('EXT:mai_account/Resources/Public/Icons/tx_maiaccount_interest.svg')
     ->setSortingField()
     ->addColumn(
         'title',
         $lang('tx_maiaccount_interest.title'),
-        (new InputConfig())->setSize(50)->setMax(255)->setEval('trim,required')
+        (new InputConfig())->setSize(50)->setMax(255)->setEval('trim')->setRequired()
     )
     ->addColumn(
         'identifier',
