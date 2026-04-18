@@ -2,6 +2,11 @@
 
 declare(strict_types=1);
 
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\DatetimeConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\FileConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\InputConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\SelectSingleConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\TextConfig;
 use Maispace\MaiBase\TableConfigurationArray\Helper;
 use Maispace\MaiBase\TableConfigurationArray\Table;
 
@@ -16,67 +21,53 @@ return (new Table($lang('table.tx_maiaccount_story')))
     ->addColumn(
         'title',
         $lang('tx_maiaccount_story.title'),
-        ['type' => 'input', 'size' => 50, 'max' => 255, 'eval' => 'trim,required']
+        (new InputConfig())->setSize(50)->setMax(255)->setEval('trim,required')
     )
     ->addColumn(
         'content',
         $lang('tx_maiaccount_story.content'),
-        [
-            'type' => 'text',
-            'rows' => 15,
-            'cols' => 50,
-            'enableRichtext' => true,
-            'richtextConfiguration' => 'default',
-        ]
+        (new TextConfig())->setRows(15)->setCols(50)->enableRte()->setRichtextConfiguration('default')
     )
     ->addColumn(
         'media',
         $lang('tx_maiaccount_story.media'),
-        [
-            'type' => 'file',
-            'allowed' => 'common-image-types,mp4,webm',
-            'maxitems' => 10,
-            'appearance' => [
+        (new FileConfig())
+            ->setAllowed('common-image-types,mp4,webm')
+            ->setMaxItems(10)
+            ->setAppearance([
                 'createNewRelationLinkTitle' => $lang('tx_maiaccount_story.media.addFile'),
-            ],
-        ]
+            ])
     )
     ->addColumn(
         'fe_user',
         $lang('tx_maiaccount_story.fe_user'),
-        [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'foreign_table' => 'fe_users',
-            'foreign_table_where' => 'ORDER BY fe_users.username',
-            'minitems' => 1,
-            'maxitems' => 1,
-        ]
+        (new SelectSingleConfig())
+            ->setForeignTable('fe_users')
+            ->setForeignTableWhere('ORDER BY fe_users.username')
+            ->setMinItems(1)
+            ->setMaxItems(1)
     )
     ->addColumn(
         'status',
         $lang('tx_maiaccount_story.status'),
-        [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => [
+        (new SelectSingleConfig())
+            ->setItems([
                 ['label' => $lang('tx_maiaccount_story.status.submitted'), 'value' => 'submitted'],
                 ['label' => $lang('tx_maiaccount_story.status.reviewing'), 'value' => 'reviewing'],
                 ['label' => $lang('tx_maiaccount_story.status.published'), 'value' => 'published'],
                 ['label' => $lang('tx_maiaccount_story.status.rejected'), 'value' => 'rejected'],
-            ],
-            'default' => 'submitted',
-        ]
+            ])
+            ->setDefault('submitted')
     )
     ->addColumn(
         'submitted_at',
         $lang('tx_maiaccount_story.submitted_at'),
-        ['type' => 'datetime', 'format' => 'datetime', 'readOnly' => true]
+        (new DatetimeConfig())->setFormat('datetime')->setReadOnly()
     )
     ->addColumn(
         'published_at',
         $lang('tx_maiaccount_story.published_at'),
-        ['type' => 'datetime', 'format' => 'datetime']
+        (new DatetimeConfig())->setFormat('datetime')
     )
     ->addPalette(
         'dates',

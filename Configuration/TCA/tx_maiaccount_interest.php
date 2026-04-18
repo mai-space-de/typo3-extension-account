@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\InputConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\SlugConfig;
 use Maispace\MaiBase\TableConfigurationArray\Helper;
 use Maispace\MaiBase\TableConfigurationArray\Table;
 
@@ -16,21 +18,18 @@ return (new Table($lang('table.tx_maiaccount_interest')))
     ->addColumn(
         'title',
         $lang('tx_maiaccount_interest.title'),
-        ['type' => 'input', 'size' => 50, 'max' => 255, 'eval' => 'trim,required']
+        (new InputConfig())->setSize(50)->setMax(255)->setEval('trim,required')
     )
     ->addColumn(
         'identifier',
         $lang('tx_maiaccount_interest.identifier'),
-        [
-            'type' => 'slug',
-            'size' => 50,
-            'generatorOptions' => [
+        (new SlugConfig())
+            ->setGeneratorOptions([
                 'fields' => ['title'],
                 'replacements' => [' ' => '-'],
-            ],
-            'fallbackCharacter' => '-',
-            'eval' => 'uniqueInSite',
-        ]
+            ])
+            ->setFallbackCharacter('-')
+            ->setEval('uniqueInSite')
     )
     ->addTypeShowItem(
         '0',

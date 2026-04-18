@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\DatetimeConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\InputConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\SelectSingleConfig;
+use Maispace\MaiBase\TableConfigurationArray\FieldConfig\TextConfig;
 use Maispace\MaiBase\TableConfigurationArray\Helper;
 use Maispace\MaiBase\TableConfigurationArray\Table;
 
@@ -17,43 +21,37 @@ return (new Table($lang('table.tx_maiaccount_reminder')))
     ->addColumn(
         'title',
         $lang('tx_maiaccount_reminder.title'),
-        ['type' => 'input', 'size' => 50, 'max' => 255, 'eval' => 'trim,required']
+        (new InputConfig())->setSize(50)->setMax(255)->setEval('trim,required')
     )
     ->addColumn(
         'message',
         $lang('tx_maiaccount_reminder.message'),
-        ['type' => 'text', 'rows' => 5, 'cols' => 50, 'eval' => 'trim']
+        (new TextConfig())->setRows(5)->setCols(50)->setEval('trim')
     )
     ->addColumn(
         'remind_at',
         $lang('tx_maiaccount_reminder.remind_at'),
-        ['type' => 'datetime', 'format' => 'datetime', 'eval' => 'required']
+        (new DatetimeConfig())->setFormat('datetime')->setRequired()
     )
     ->addColumn(
         'fe_user',
         $lang('tx_maiaccount_reminder.fe_user'),
-        [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'foreign_table' => 'fe_users',
-            'foreign_table_where' => 'ORDER BY fe_users.username',
-            'minitems' => 1,
-            'maxitems' => 1,
-        ]
+        (new SelectSingleConfig())
+            ->setForeignTable('fe_users')
+            ->setForeignTableWhere('ORDER BY fe_users.username')
+            ->setMinItems(1)
+            ->setMaxItems(1)
     )
     ->addColumn(
         'status',
         $lang('tx_maiaccount_reminder.status'),
-        [
-            'type' => 'select',
-            'renderType' => 'selectSingle',
-            'items' => [
+        (new SelectSingleConfig())
+            ->setItems([
                 ['label' => $lang('tx_maiaccount_reminder.status.pending'), 'value' => 'pending'],
                 ['label' => $lang('tx_maiaccount_reminder.status.sent'), 'value' => 'sent'],
                 ['label' => $lang('tx_maiaccount_reminder.status.dismissed'), 'value' => 'dismissed'],
-            ],
-            'default' => 'pending',
-        ]
+            ])
+            ->setDefault('pending')
     )
     ->addTypeShowItem(
         '0',
