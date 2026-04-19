@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-mfa-setup">
+        <h2><f:translate key="mfa.setup" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <div class="mai-mfa-setup__instructions">
+            <p><f:translate key="mfa.setup.instructions" extensionName="mai_account" default="Scan the QR code with your authenticator app, then enter the 6-digit code to confirm."/></p>
+        </div>
+        <div class="mai-mfa-setup__qrcode">
+            <img src="{qrCodeUri}" alt="MFA QR Code" class="mai-mfa-setup__qrimage"/>
+        </div>
+        <div class="mai-mfa-setup__secret">
+            <p><f:translate key="mfa.setup.manualSecret" extensionName="mai_account" default="Or enter this secret manually:"/></p>
+            <code>{secret}</code>
+        </div>
+        <f:form action="verify" controller="Mfa" method="post">
+            <f:form.hidden name="secret" value="{secret}"/>
+            <div class="form-group">
+                <label for="code"><f:translate key="mfa.code" extensionName="mai_account" default="Authentication Code"/></label>
+                <f:form.textfield id="code" name="code" class="form-control" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'mfa.setup.confirm', extensionName: 'mai_account', default: 'Confirm & Enable')}" class="btn btn-primary"/>
+            </div>
+        </f:form>
+    </div>
+</f:section>
+</html>

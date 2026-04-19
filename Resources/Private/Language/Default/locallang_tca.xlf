@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="messages" date="2026-01-01T00:00:00Z" product-name="mai_account">
+        <header/>
+        <body>
+            <trans-unit id="table.tx_maiaccount_interest">
+                <source>Interest</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_interest.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_interest.identifier">
+                <source>Identifier</source>
+            </trans-unit>
+            <trans-unit id="table.tx_maiaccount_reminder">
+                <source>Reminder</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_reminder.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_reminder.fe_user">
+                <source>Frontend User</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_reminder.remind_at">
+                <source>Remind At</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_reminder.sent">
+                <source>Sent</source>
+            </trans-unit>
+            <trans-unit id="table.tx_maiaccount_story">
+                <source>Story</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.content">
+                <source>Content</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.media">
+                <source>Media</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.media.addFile">
+                <source>Add File</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.fe_user">
+                <source>Author</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.status">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.status.submitted">
+                <source>Submitted</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.status.reviewing">
+                <source>Under Review</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.status.published">
+                <source>Published</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.status.rejected">
+                <source>Rejected</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.submitted_at">
+                <source>Submitted At</source>
+            </trans-unit>
+            <trans-unit id="tx_maiaccount_story.published_at">
+                <source>Published At</source>
+            </trans-unit>
+            <trans-unit id="fe_users.tx_maiaccount_mfa_enabled">
+                <source>MFA Enabled</source>
+            </trans-unit>
+            <trans-unit id="fe_users.tx_maiaccount_mfa_secret">
+                <source>MFA Secret</source>
+            </trans-unit>
+            <trans-unit id="fe_users.tx_maiaccount_interests">
+                <source>Interests</source>
+            </trans-unit>
+            <trans-unit id="fe_users.tx_maiaccount_newsletter_optin">
+                <source>Newsletter Opt-In</source>
+            </trans-unit>
+            <trans-unit id="fe_users.tx_maiaccount_member_uid">
+                <source>Member Record</source>
+            </trans-unit>
+            <trans-unit id="fe_users.tx_maiaccount_confirm_token">
+                <source>Confirmation Token</source>
+            </trans-unit>
+            <trans-unit id="tab.account">
+                <source>Account</source>
+            </trans-unit>
+            <trans-unit id="tab.language">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="tab.access">
+                <source>Access</source>
+            </trans-unit>
+            <trans-unit id="tab.meta">
+                <source>Meta</source>
+            </trans-unit>
+            <trans-unit id="palette.dates">
+                <source>Dates</source>
+            </trans-unit>
+            <trans-unit id="ctype.account">
+                <source>Account</source>
+            </trans-unit>
+            <trans-unit id="ctype.mfa">
+                <source>MFA Setup</source>
+            </trans-unit>
+            <trans-unit id="ctype.stories">
+                <source>Stories</source>
+            </trans-unit>
+            <trans-unit id="plugin.account.title">
+                <source>Account: Login / Profile</source>
+            </trans-unit>
+            <trans-unit id="plugin.mfa.title">
+                <source>Account: MFA Setup</source>
+            </trans-unit>
+            <trans-unit id="plugin.stories.title">
+                <source>Account: Stories</source>
+            </trans-unit>
+            <trans-unit id="flexform.sheet.general">
+                <source>General</source>
+            </trans-unit>
+            <trans-unit id="flexform.field.loginRedirectPid">
+                <source>Redirect after Login</source>
+            </trans-unit>
+            <trans-unit id="flexform.field.logoutRedirectPid">
+                <source>Redirect after Logout</source>
+            </trans-unit>
+            <trans-unit id="flexform.field.registerConfirmPid">
+                <source>Registration Confirmation Page</source>
+            </trans-unit>
+            <trans-unit id="flexform.field.itemsPerPage">
+                <source>Items per Page</source>
+            </trans-unit>
+            <trans-unit id="task.reminder.title">
+                <source>Mai Account: Dispatch due reminders</source>
+            </trans-unit>
+            <trans-unit id="task.reminder.description">
+                <source>Scans tx_maiaccount_reminder for due, unsent reminders and dispatches notification emails via mai_mail.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

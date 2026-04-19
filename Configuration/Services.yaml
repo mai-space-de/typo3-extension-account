@@ -6,4 +6,18 @@ services:
 
   Maispace\MaiAccount\:
     resource: '../Classes/*'
-    exclude: '../Classes/Domain/Model/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
+      - '../Classes/Task/*'
+
+  Maispace\MaiAccount\Service\MfaService:
+    public: true
+
+  Maispace\MaiAccount\Service\RegistrationService:
+    public: true
+
+  Maispace\MaiAccount\Service\ReminderService:
+    public: true
+
+  Maispace\MaiAccount\Service\AccountMailer:
+    public: true

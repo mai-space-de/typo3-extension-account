@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-account-reminders">
+        <h2><f:translate key="account.reminders" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+
+        <div class="mai-account-reminders__add">
+            <h3><f:translate key="reminders.add" extensionName="mai_account" default="Add Reminder"/></h3>
+            <f:form action="reminders" method="post">
+                <div class="form-group">
+                    <label for="reminderTitle"><f:translate key="reminder.title" extensionName="mai_account" default="Title"/></label>
+                    <f:form.textfield id="reminderTitle" name="reminderTitle" class="form-control" required="true"/>
+                </div>
+                <div class="form-group">
+                    <label for="reminderAt"><f:translate key="reminder.remindAt" extensionName="mai_account" default="Remind me at"/></label>
+                    <f:form.textfield id="reminderAt" name="reminderAt" type="datetime-local" class="form-control" required="true"/>
+                </div>
+                <div class="form-actions">
+                    <f:form.submit value="{f:translate(key: 'reminders.add', extensionName: 'mai_account', default: 'Add Reminder')}" class="btn btn-primary"/>
+                </div>
+            </f:form>
+        </div>
+
+        <div class="mai-account-reminders__list">
+            <f:if condition="{reminders}">
+                <f:then>
+                    <ul>
+                        <f:for each="{reminders}" as="reminder">
+                            <li class="mai-account-reminders__item{f:if(condition: reminder.sent, then: ' mai-account-reminders__item--sent')}">
+                                <span class="mai-account-reminders__title">{reminder.title}</span>
+                                <f:if condition="{reminder.remindAt}">
+                                    <span class="mai-account-reminders__date"><f:format.date date="{reminder.remindAt}" format="{settings.dateFormat}"/></span>
+                                </f:if>
+                                <f:if condition="{reminder.sent}">
+                                    <span class="mai-account-reminders__sent"><f:translate key="reminder.sent" extensionName="mai_account" default="Sent"/></span>
+                                </f:if>
+                            </li>
+                        </f:for>
+                    </ul>
+                </f:then>
+                <f:else>
+                    <p><f:translate key="reminders.none" extensionName="mai_account" default="No reminders set."/></p>
+                </f:else>
+            </f:if>
+        </div>
+        <f:link.action action="profile"><f:translate key="account.profile" extensionName="mai_account"/></f:link.action>
+    </div>
+</f:section>
+</html>

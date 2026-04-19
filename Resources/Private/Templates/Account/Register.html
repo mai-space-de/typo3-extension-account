@@ -1,0 +1,38 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-account-register">
+        <h2><f:translate key="account.register" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form action="register" method="post">
+            <div class="form-group">
+                <label for="firstName"><f:translate key="register.firstName" extensionName="mai_account" default="First Name"/></label>
+                <f:form.textfield id="firstName" name="firstName" class="form-control" required="true" autocomplete="given-name"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName"><f:translate key="register.lastName" extensionName="mai_account" default="Last Name"/></label>
+                <f:form.textfield id="lastName" name="lastName" class="form-control" required="true" autocomplete="family-name"/>
+            </div>
+            <div class="form-group">
+                <label for="username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>
+                <f:form.textfield id="username" name="username" class="form-control" required="true" autocomplete="username"/>
+            </div>
+            <div class="form-group">
+                <label for="email"><f:translate key="register.email" extensionName="mai_account" default="E-Mail"/></label>
+                <f:form.textfield id="email" name="email" type="email" class="form-control" required="true" autocomplete="email"/>
+            </div>
+            <div class="form-group">
+                <label for="password"><f:translate key="login.password" extensionName="mai_account" default="Password"/></label>
+                <f:form.password id="password" name="password" class="form-control" required="true" autocomplete="new-password"/>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'account.register', extensionName: 'mai_account')}" class="btn btn-primary"/>
+            </div>
+        </f:form>
+        <div class="mai-account-register__links">
+            <f:link.action action="login"><f:translate key="account.login" extensionName="mai_account"/></f:link.action>
+        </div>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-account-newsletter">
+        <h2><f:translate key="account.newsletter" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form action="newsletterOptIn" method="post">
+            <div class="form-group">
+                <f:form.checkbox
+                    name="optIn"
+                    value="1"
+                    checked="{user.txMaiaccountNewsletterOptin}"
+                    id="newsletterOptIn"
+                />
+                <label for="newsletterOptIn"><f:translate key="newsletter.subscribe" extensionName="mai_account" default="Subscribe to newsletter"/></label>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'profile.save', extensionName: 'mai_account', default: 'Save')}" class="btn btn-primary"/>
+            </div>
+        </f:form>
+        <f:link.action action="profile"><f:translate key="account.profile" extensionName="mai_account"/></f:link.action>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-mfa-verify">
+        <h2><f:translate key="mfa.verify" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form action="verify" controller="Mfa" method="post">
+            <div class="form-group">
+                <label for="code"><f:translate key="mfa.code" extensionName="mai_account" default="Authentication Code"/></label>
+                <f:form.textfield id="code" name="code" class="form-control" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'mfa.verify', extensionName: 'mai_account')}" class="btn btn-primary"/>
+            </div>
+        </f:form>
+    </div>
+</f:section>
+</html>

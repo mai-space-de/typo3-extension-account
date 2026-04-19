@@ -1,0 +1,40 @@
+plugin.tx_maiaccount_account {
+    view {
+        templateRootPath =
+        partialRootPath =
+        layoutRootPath =
+    }
+    persistence {
+        storagePid =
+    }
+    settings {
+        loginRedirectPid =
+        logoutRedirectPid =
+        registerConfirmPid =
+        registerStoragePid =
+        newsletterSubscriberStoragePid =
+        newsletterConfirmPid =
+    }
+}
+
+plugin.tx_maiaccount_mfa {
+    view {
+        templateRootPath =
+        partialRootPath =
+        layoutRootPath =
+    }
+}
+
+plugin.tx_maiaccount_stories {
+    view {
+        templateRootPath =
+        partialRootPath =
+        layoutRootPath =
+    }
+    persistence {
+        storagePid =
+    }
+    settings {
+        itemsPerPage = 10
+    }
+}

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="messages" date="2026-01-01T00:00:00Z" product-name="mai_account">
+        <header/>
+        <body>
+            <trans-unit id="account.login">
+                <source>Login</source>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>Logout</source>
+            </trans-unit>
+            <trans-unit id="account.register">
+                <source>Register</source>
+            </trans-unit>
+            <trans-unit id="account.profile">
+                <source>My Profile</source>
+            </trans-unit>
+            <trans-unit id="account.interests">
+                <source>My Interests</source>
+            </trans-unit>
+            <trans-unit id="account.reminders">
+                <source>My Reminders</source>
+            </trans-unit>
+            <trans-unit id="account.newsletter">
+                <source>Newsletter</source>
+            </trans-unit>
+            <trans-unit id="mfa.setup">
+                <source>Set Up Two-Factor Authentication</source>
+            </trans-unit>
+            <trans-unit id="mfa.verify">
+                <source>Enter Authentication Code</source>
+            </trans-unit>
+            <trans-unit id="mfa.disable">
+                <source>Disable Two-Factor Authentication</source>
+            </trans-unit>
+            <trans-unit id="story.list">
+                <source>Stories</source>
+            </trans-unit>
+            <trans-unit id="story.submit">
+                <source>Share Your Story</source>
+            </trans-unit>
+            <trans-unit id="story.noStories">
+                <source>No stories yet.</source>
+            </trans-unit>
+            <trans-unit id="flash.profileSaved">
+                <source>Your profile has been saved.</source>
+            </trans-unit>
+            <trans-unit id="flash.interestsSaved">
+                <source>Your interests have been saved.</source>
+            </trans-unit>
+            <trans-unit id="flash.reminderSaved">
+                <source>Reminder saved.</source>
+            </trans-unit>
+            <trans-unit id="flash.storySubmitted">
+                <source>Your story has been submitted for review.</source>
+            </trans-unit>
+            <trans-unit id="flash.mfaEnabled">
+                <source>Two-factor authentication has been enabled.</source>
+            </trans-unit>
+            <trans-unit id="flash.mfaDisabled">
+                <source>Two-factor authentication has been disabled.</source>
+            </trans-unit>
+            <trans-unit id="flash.mfaInvalidCode">
+                <source>The authentication code is invalid. Please try again.</source>
+            </trans-unit>
+            <trans-unit id="profile.changePassword">
+                <source>Change Password</source>
+            </trans-unit>
+            <trans-unit id="profile.currentPassword">
+                <source>Current Password</source>
+            </trans-unit>
+            <trans-unit id="profile.newPassword">
+                <source>New Password</source>
+            </trans-unit>
+            <trans-unit id="profile.newPasswordConfirm">
+                <source>Confirm New Password</source>
+            </trans-unit>
+            <trans-unit id="confirm.success.title">
+                <source>Account activated</source>
+            </trans-unit>
+            <trans-unit id="confirm.success.message">
+                <source>Your account is now active. You can log in.</source>
+            </trans-unit>
+            <trans-unit id="confirm.fail.title">
+                <source>Confirmation failed</source>
+            </trans-unit>
+            <trans-unit id="confirm.fail.message">
+                <source>The confirmation link is invalid or has expired.</source>
+            </trans-unit>
+            <trans-unit id="email.confirm.subject">
+                <source>Please confirm your account</source>
+            </trans-unit>
+            <trans-unit id="email.confirm.greeting">
+                <source>Hello,</source>
+            </trans-unit>
+            <trans-unit id="email.confirm.greetingNamed">
+                <source>Hello %s,</source>
+            </trans-unit>
+            <trans-unit id="email.confirm.body">
+                <source>Please confirm your account by clicking the link below:</source>
+            </trans-unit>
+            <trans-unit id="email.confirm.disclaimer">
+                <source>If you did not create this account you can ignore this email.</source>
+            </trans-unit>
+            <trans-unit id="email.reminder.subject">
+                <source>Reminder</source>
+            </trans-unit>
+            <trans-unit id="email.reminder.greeting">
+                <source>Hello,</source>
+            </trans-unit>
+            <trans-unit id="email.reminder.greetingNamed">
+                <source>Hello %s,</source>
+            </trans-unit>
+            <trans-unit id="email.reminder.body">
+                <source>This is your reminder:</source>
+            </trans-unit>
+            <trans-unit id="email.reminder.when">
+                <source>Scheduled for:</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

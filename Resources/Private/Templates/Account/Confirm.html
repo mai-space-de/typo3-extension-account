@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-account-confirm">
+        <f:if condition="{success}">
+            <f:then>
+                <h2><f:translate key="confirm.success.title" extensionName="mai_account" default="Account activated"/></h2>
+                <p><f:translate key="confirm.success.message" extensionName="mai_account" default="Your account is now active. You can log in."/></p>
+                <f:link.action action="login" class="btn btn-primary"><f:translate key="account.login" extensionName="mai_account"/></f:link.action>
+            </f:then>
+            <f:else>
+                <h2><f:translate key="confirm.fail.title" extensionName="mai_account" default="Confirmation failed"/></h2>
+                <p><f:translate key="confirm.fail.message" extensionName="mai_account" default="The confirmation link is invalid or has expired."/></p>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</html>

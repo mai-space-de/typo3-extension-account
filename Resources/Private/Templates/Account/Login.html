@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-account-login">
+        <h2><f:translate key="account.login" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form action="login" method="post">
+            <div class="form-group">
+                <label for="username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>
+                <f:form.textfield id="username" name="username" class="form-control" required="true" autocomplete="username"/>
+            </div>
+            <div class="form-group">
+                <label for="password"><f:translate key="login.password" extensionName="mai_account" default="Password"/></label>
+                <f:form.password id="password" name="password" class="form-control" required="true" autocomplete="current-password"/>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'account.login', extensionName: 'mai_account')}" class="btn btn-primary"/>
+            </div>
+        </f:form>
+        <div class="mai-account-login__links">
+            <f:link.action action="register"><f:translate key="account.register" extensionName="mai_account"/></f:link.action>
+        </div>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-account-interests">
+        <h2><f:translate key="account.interests" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form action="interests" method="post">
+            <div class="mai-account-interests__list">
+                <f:for each="{allInterests}" as="interest">
+                    <div class="mai-account-interests__item">
+                        <f:form.checkbox
+                            name="selectedInterests[]"
+                            value="{interest.uid}"
+                            checked="{interest.uid -> f:if(condition: '{user.txMaiaccountInterests -> f:count()} > 0', then: true, else: false)}"
+                            id="interest_{interest.uid}"
+                        />
+                        <label for="interest_{interest.uid}">{interest.title}</label>
+                    </div>
+                </f:for>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'profile.save', extensionName: 'mai_account', default: 'Save')}" class="btn btn-primary"/>
+            </div>
+        </f:form>
+        <f:link.action action="profile"><f:translate key="account.profile" extensionName="mai_account"/></f:link.action>
+    </div>
+</f:section>
+</html>

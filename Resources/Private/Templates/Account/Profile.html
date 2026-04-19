@@ -1,0 +1,53 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-account-profile">
+        <h2><f:translate key="account.profile" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form action="profile" method="post">
+            <div class="form-group">
+                <label for="firstName"><f:translate key="register.firstName" extensionName="mai_account" default="First Name"/></label>
+                <f:form.textfield id="firstName" name="firstName" value="{user.firstName}" class="form-control" autocomplete="given-name"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName"><f:translate key="register.lastName" extensionName="mai_account" default="Last Name"/></label>
+                <f:form.textfield id="lastName" name="lastName" value="{user.lastName}" class="form-control" autocomplete="family-name"/>
+            </div>
+            <div class="form-group">
+                <label for="email"><f:translate key="register.email" extensionName="mai_account" default="E-Mail"/></label>
+                <f:form.textfield id="email" name="email" type="email" value="{user.email}" class="form-control" autocomplete="email"/>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'profile.save', extensionName: 'mai_account', default: 'Save')}" class="btn btn-primary"/>
+            </div>
+        </f:form>
+        <div class="mai-account-profile__password">
+            <h3><f:translate key="profile.changePassword" extensionName="mai_account" default="Change Password"/></h3>
+            <f:form action="changePassword" method="post">
+                <div class="form-group">
+                    <label for="currentPassword"><f:translate key="profile.currentPassword" extensionName="mai_account" default="Current Password"/></label>
+                    <f:form.password id="currentPassword" name="currentPassword" class="form-control" required="true" autocomplete="current-password"/>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword"><f:translate key="profile.newPassword" extensionName="mai_account" default="New Password"/></label>
+                    <f:form.password id="newPassword" name="newPassword" class="form-control" required="true" autocomplete="new-password"/>
+                </div>
+                <div class="form-group">
+                    <label for="newPasswordConfirm"><f:translate key="profile.newPasswordConfirm" extensionName="mai_account" default="Confirm New Password"/></label>
+                    <f:form.password id="newPasswordConfirm" name="newPasswordConfirm" class="form-control" required="true" autocomplete="new-password"/>
+                </div>
+                <div class="form-actions">
+                    <f:form.submit value="{f:translate(key: 'profile.changePassword', extensionName: 'mai_account', default: 'Change Password')}" class="btn btn-primary"/>
+                </div>
+            </f:form>
+        </div>
+        <nav class="mai-account-profile__nav">
+            <f:link.action action="interests"><f:translate key="account.interests" extensionName="mai_account"/></f:link.action>
+            <f:link.action action="reminders"><f:translate key="account.reminders" extensionName="mai_account"/></f:link.action>
+            <f:link.action action="newsletterOptIn"><f:translate key="account.newsletter" extensionName="mai_account"/></f:link.action>
+            <f:link.action action="logout"><f:translate key="account.logout" extensionName="mai_account"/></f:link.action>
+        </nav>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,39 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-story-list">
+        <h2><f:translate key="story.list" extensionName="mai_account"/></h2>
+        <f:if condition="{stories}">
+            <f:then>
+                <div class="mai-story-list__items">
+                    <f:for each="{stories}" as="story">
+                        <article class="mai-story-list__item">
+                            <h3 class="mai-story-list__title">
+                                <f:link.action action="detail" arguments="{story: story}">{story.title}</f:link.action>
+                            </h3>
+                            <div class="mai-story-list__content">
+                                <f:format.crop maxCharacters="200" append="...">{story.content}</f:format.crop>
+                            </div>
+                            <footer class="mai-story-list__meta">
+                                <f:if condition="{story.publishedAt}">
+                                    <time datetime="{f:format.date(date: story.publishedAt, format: 'c')}">
+                                        <f:format.date date="{story.publishedAt}" format="{settings.dateFormat}"/>
+                                    </time>
+                                </f:if>
+                            </footer>
+                        </article>
+                    </f:for>
+                </div>
+                <f:render partial="Pagination" arguments="{pagination: pagination, paginator: paginator}"/>
+            </f:then>
+            <f:else>
+                <p class="mai-story-list__empty"><f:translate key="story.noStories" extensionName="mai_account"/></p>
+            </f:else>
+        </f:if>
+        <div class="mai-story-list__actions">
+            <f:link.action action="submit" class="btn btn-primary"><f:translate key="story.submit" extensionName="mai_account"/></f:link.action>
+        </div>
+    </div>
+</f:section>
+</html>

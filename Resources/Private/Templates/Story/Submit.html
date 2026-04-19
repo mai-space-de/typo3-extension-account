@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="mai-story-submit">
+        <h2><f:translate key="story.submit" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form action="submit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="storyTitle"><f:translate key="story.field.title" extensionName="mai_account" default="Title"/></label>
+                <f:form.textfield id="storyTitle" name="title" class="form-control" required="true"/>
+            </div>
+            <div class="form-group">
+                <label for="storyContent"><f:translate key="story.field.content" extensionName="mai_account" default="Your Story"/></label>
+                <f:form.textarea id="storyContent" name="content" class="form-control" rows="10" required="true"/>
+            </div>
+            <div class="form-group">
+                <label for="storyMedia"><f:translate key="story.field.media" extensionName="mai_account" default="Images (optional)"/></label>
+                <f:form.upload id="storyMedia" name="media" class="form-control" multiple="multiple" accept="image/*"/>
+            </div>
+            <div class="form-actions">
+                <f:form.submit value="{f:translate(key: 'story.submit', extensionName: 'mai_account')}" class="btn btn-primary"/>
+                <f:link.action action="list" class="btn btn-secondary"><f:translate key="action.cancel" extensionName="mai_account" default="Cancel"/></f:link.action>
+            </div>
+        </f:form>
+    </div>
+</f:section>
+</html>

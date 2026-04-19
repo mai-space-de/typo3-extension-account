@@ -1,0 +1,67 @@
+plugin.tx_maiaccount_account {
+    view {
+        templateRootPaths {
+            0 = EXT:mai_account/Resources/Private/Templates/
+            10 = {$plugin.tx_maiaccount_account.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:mai_account/Resources/Private/Partials/
+            10 = {$plugin.tx_maiaccount_account.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:mai_account/Resources/Private/Layouts/
+            10 = {$plugin.tx_maiaccount_account.view.layoutRootPath}
+        }
+    }
+    persistence {
+        storagePid = {$plugin.tx_maiaccount_account.persistence.storagePid}
+    }
+    settings {
+        loginRedirectPid = {$plugin.tx_maiaccount_account.settings.loginRedirectPid}
+        logoutRedirectPid = {$plugin.tx_maiaccount_account.settings.logoutRedirectPid}
+        registerConfirmPid = {$plugin.tx_maiaccount_account.settings.registerConfirmPid}
+        registerStoragePid = {$plugin.tx_maiaccount_account.settings.registerStoragePid}
+        newsletterSubscriberStoragePid = {$plugin.tx_maiaccount_account.settings.newsletterSubscriberStoragePid}
+        newsletterConfirmPid = {$plugin.tx_maiaccount_account.settings.newsletterConfirmPid}
+    }
+}
+
+plugin.tx_maiaccount_mfa {
+    view {
+        templateRootPaths {
+            0 = EXT:mai_account/Resources/Private/Templates/
+            10 = {$plugin.tx_maiaccount_mfa.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:mai_account/Resources/Private/Partials/
+            10 = {$plugin.tx_maiaccount_mfa.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:mai_account/Resources/Private/Layouts/
+            10 = {$plugin.tx_maiaccount_mfa.view.layoutRootPath}
+        }
+    }
+}
+
+plugin.tx_maiaccount_stories {
+    view {
+        templateRootPaths {
+            0 = EXT:mai_account/Resources/Private/Templates/
+            10 = {$plugin.tx_maiaccount_stories.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:mai_account/Resources/Private/Partials/
+            10 = {$plugin.tx_maiaccount_stories.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:mai_account/Resources/Private/Layouts/
+            10 = {$plugin.tx_maiaccount_stories.view.layoutRootPath}
+        }
+    }
+    persistence {
+        storagePid = {$plugin.tx_maiaccount_stories.persistence.storagePid}
+    }
+    settings {
+        itemsPerPage = {$plugin.tx_maiaccount_stories.settings.itemsPerPage}
+    }
+}

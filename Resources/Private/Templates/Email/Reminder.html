@@ -1,0 +1,17 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<body>
+    <p>
+        <f:if condition="{firstName}">
+            <f:then><f:translate key="email.reminder.greetingNamed" extensionName="mai_account" arguments="{0: firstName}" default="Hello {firstName},"/></f:then>
+            <f:else><f:translate key="email.reminder.greeting" extensionName="mai_account" default="Hello,"/></f:else>
+        </f:if>
+    </p>
+    <p><f:translate key="email.reminder.body" extensionName="mai_account" default="This is your reminder:"/></p>
+    <p><strong>{reminderTitle}</strong></p>
+    <p>
+        <f:translate key="email.reminder.when" extensionName="mai_account" default="Scheduled for:"/>
+        <f:format.date date="{remindAt}" format="d.m.Y H:i"/>
+    </p>
+</body>
+</html>

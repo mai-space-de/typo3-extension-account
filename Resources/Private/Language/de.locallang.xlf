@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2026-01-01T00:00:00Z" product-name="mai_account">
+        <header/>
+        <body>
+            <trans-unit id="account.login">
+                <source>Login</source>
+                <target>Anmelden</target>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>Logout</source>
+                <target>Abmelden</target>
+            </trans-unit>
+            <trans-unit id="account.register">
+                <source>Register</source>
+                <target>Registrieren</target>
+            </trans-unit>
+            <trans-unit id="account.profile">
+                <source>My Profile</source>
+                <target>Mein Profil</target>
+            </trans-unit>
+            <trans-unit id="account.interests">
+                <source>My Interests</source>
+                <target>Meine Interessen</target>
+            </trans-unit>
+            <trans-unit id="account.reminders">
+                <source>My Reminders</source>
+                <target>Meine Erinnerungen</target>
+            </trans-unit>
+            <trans-unit id="account.newsletter">
+                <source>Newsletter</source>
+                <target>Newsletter</target>
+            </trans-unit>
+            <trans-unit id="mfa.setup">
+                <source>Set Up Two-Factor Authentication</source>
+                <target>Zwei-Faktor-Authentifizierung einrichten</target>
+            </trans-unit>
+            <trans-unit id="mfa.verify">
+                <source>Enter Authentication Code</source>
+                <target>Authentifizierungscode eingeben</target>
+            </trans-unit>
+            <trans-unit id="mfa.disable">
+                <source>Disable Two-Factor Authentication</source>
+                <target>Zwei-Faktor-Authentifizierung deaktivieren</target>
+            </trans-unit>
+            <trans-unit id="story.list">
+                <source>Stories</source>
+                <target>Geschichten</target>
+            </trans-unit>
+            <trans-unit id="story.submit">
+                <source>Share Your Story</source>
+                <target>Deine Geschichte teilen</target>
+            </trans-unit>
+            <trans-unit id="story.noStories">
+                <source>No stories yet.</source>
+                <target>Noch keine Geschichten vorhanden.</target>
+            </trans-unit>
+            <trans-unit id="flash.profileSaved">
+                <source>Your profile has been saved.</source>
+                <target>Dein Profil wurde gespeichert.</target>
+            </trans-unit>
+            <trans-unit id="flash.interestsSaved">
+                <source>Your interests have been saved.</source>
+                <target>Deine Interessen wurden gespeichert.</target>
+            </trans-unit>
+            <trans-unit id="flash.reminderSaved">
+                <source>Reminder saved.</source>
+                <target>Erinnerung gespeichert.</target>
+            </trans-unit>
+            <trans-unit id="flash.storySubmitted">
+                <source>Your story has been submitted for review.</source>
+                <target>Deine Geschichte wurde zur Überprüfung eingereicht.</target>
+            </trans-unit>
+            <trans-unit id="flash.mfaEnabled">
+                <source>Two-factor authentication has been enabled.</source>
+                <target>Zwei-Faktor-Authentifizierung wurde aktiviert.</target>
+            </trans-unit>
+            <trans-unit id="flash.mfaDisabled">
+                <source>Two-factor authentication has been disabled.</source>
+                <target>Zwei-Faktor-Authentifizierung wurde deaktiviert.</target>
+            </trans-unit>
+            <trans-unit id="flash.mfaInvalidCode">
+                <source>The authentication code is invalid. Please try again.</source>
+                <target>Der Authentifizierungscode ist ungültig. Bitte versuche es erneut.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
