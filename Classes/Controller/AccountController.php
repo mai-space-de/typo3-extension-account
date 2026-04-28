@@ -6,6 +6,7 @@ namespace Maispace\MaiAccount\Controller;
 
 use Maispace\MaiAccount\Domain\Model\FrontendUser;
 use Maispace\MaiAccount\Domain\Model\Reminder;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
 use Maispace\MaiAccount\Domain\Repository\InterestRepository;
 use Maispace\MaiAccount\Domain\Repository\ReminderRepository;
 use Maispace\MaiAccount\Service\AccountMailer;
@@ -19,7 +20,6 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 

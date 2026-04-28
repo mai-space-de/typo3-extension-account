@@ -9,7 +9,7 @@ use Maispace\MaiBase\Controller\AbstractActionController;
 use Maispace\MaiBase\Controller\Traits\FlashMessageTrait;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
+use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
 
 class MfaController extends AbstractActionController
 {
