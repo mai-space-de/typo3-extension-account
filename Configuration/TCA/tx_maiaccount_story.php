@@ -15,7 +15,7 @@ $lang = Helper::localLangHelperFactory('mai_account', 'Default/locallang_tca.xlf
 return (new Table($lang('table.tx_maiaccount_story')))
     ->setDefaultConfig()
     ->setLabel('title')
-    ->setIconFile('EXT:mai_account/Resources/Public/Icons/tx_maiaccount_story.svg')
+    ->setIconFile('EXT:mai_base/Resources/Public/Icons/generic_table.svg')
     ->setDefaultSorting('ORDER BY submitted_at DESC')
     ->addColumn(
         'title',

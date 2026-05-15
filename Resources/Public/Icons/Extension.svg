@@ -1,6 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <circle fill="currentColor" cx="26" cy="20" r="8"/>
-  <path fill="currentColor" d="M8 50c0-9.9 8.1-18 18-18s18 8.1 18 18H8z"/>
-  <path fill="var(--icon-color-accent, #ff8700)" d="M52 32v-3a6 6 0 0 0-12 0v3h-2v14h16V32h-2zm-10-3a4 4 0 0 1 8 0v3h-8v-3z"/>
-  <circle fill="currentColor" cx="46" cy="39" r="2"/>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 0H64V64H0V0Z" fill="#FF8700"/>
 </svg>

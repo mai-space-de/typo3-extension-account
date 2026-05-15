@@ -15,7 +15,7 @@ return (new Table($lang('table.tx_maiaccount_reminder')))
     ->setDefaultConfig()
     ->setLabel('title')
     ->setAlternativeLabelFields('remind_at')
-    ->setIconFile('EXT:mai_account/Resources/Public/Icons/tx_maiaccount_reminder.svg')
+    ->setIconFile('EXT:mai_base/Resources/Public/Icons/generic_table.svg')
     ->setDefaultSorting('ORDER BY remind_at ASC')
     ->addColumn(
         'title',

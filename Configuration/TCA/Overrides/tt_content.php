@@ -15,7 +15,7 @@ ExtensionUtility::registerPlugin(
     'MaiAccount',
     'Account',
     $lang('plugin.account.title'),
-    'ext-maispace-mai_account',
+    'mai-content',
     'maispace_feature',
 );
 
@@ -23,7 +23,7 @@ ExtensionUtility::registerPlugin(
     'MaiAccount',
     'Mfa',
     $lang('plugin.mfa.title'),
-    'ext-maispace-mai_account',
+    'mai-content',
     'maispace_feature',
 );
 
@@ -31,11 +31,11 @@ ExtensionUtility::registerPlugin(
     'MaiAccount',
     'Stories',
     $lang('plugin.stories.title'),
-    'ext-maispace-mai_account',
+    'mai-content',
     'maispace_feature',
 );
 
-(new CType('maispace_account_account', $lang('ctype.account'), 'ext-maispace-mai_account'))
+(new CType('maispace_account_account', $lang('ctype.account'), 'mai-content'))
     ->addDefaultHeaderPalette()
     ->addCustomFields('pi_flexform')
     ->addDefaultLanguageTab()
@@ -43,14 +43,14 @@ ExtensionUtility::registerPlugin(
     ->setGroup('maispace_feature')
     ->register();
 
-(new CType('maispace_account_mfa', $lang('ctype.mfa'), 'ext-maispace-mai_account'))
+(new CType('maispace_account_mfa', $lang('ctype.mfa'), 'mai-content'))
     ->addDefaultHeaderPalette()
     ->addDefaultLanguageTab()
     ->addDefaultAccessTab()
     ->setGroup('maispace_feature')
     ->register();
 
-(new CType('maispace_account_stories', $lang('ctype.stories'), 'ext-maispace-mai_account'))
+(new CType('maispace_account_stories', $lang('ctype.stories'), 'mai-content'))
     ->addDefaultHeaderPalette()
     ->addCustomFields('pi_flexform')
     ->addDefaultLanguageTab()
