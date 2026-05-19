@@ -50,8 +50,8 @@ class ReminderTask extends AbstractTask
         $remindAt = $reminder->getRemindAt() ?? new \DateTimeImmutable();
 
         $accountMailer->sendReminderNotification(
-            (string)$row['email'],
-            (string)($row['first_name'] ?? ''),
+            (string) $row['email'],
+            (string) ($row['first_name'] ?? ''),
             $reminder->getTitle(),
             $remindAt,
         );

@@ -1,40 +1,47 @@
-plugin.tx_maiaccount_account {
-    view {
-        templateRootPath =
-        partialRootPath =
-        layoutRootPath =
+plugin {
+    tx_maiaccount {
+        view {
+            templateRootPath = EXT:mai_account/Resources/Private/Templates/
+            partialRootPath = EXT:mai_account/Resources/Private/Partials/
+            layoutRootPath = EXT:mai_account/Resources/Private/Layouts/
+        }
     }
-    persistence {
-        storagePid =
+    tx_maiaccount_account {
+        view {
+            templateRootPath =
+            partialRootPath =
+            layoutRootPath =
+        }
+        persistence {
+            storagePid =
+        }
+        settings {
+            loginRedirectPid =
+            logoutRedirectPid =
+            registerConfirmPid =
+            registerStoragePid =
+            newsletterSubscriberStoragePid =
+            newsletterConfirmPid =
+        }
     }
-    settings {
-        loginRedirectPid =
-        logoutRedirectPid =
-        registerConfirmPid =
-        registerStoragePid =
-        newsletterSubscriberStoragePid =
-        newsletterConfirmPid =
+    tx_maiaccount_mfa {
+        view {
+            templateRootPath =
+            partialRootPath =
+            layoutRootPath =
+        }
     }
-}
-
-plugin.tx_maiaccount_mfa {
-    view {
-        templateRootPath =
-        partialRootPath =
-        layoutRootPath =
-    }
-}
-
-plugin.tx_maiaccount_stories {
-    view {
-        templateRootPath =
-        partialRootPath =
-        layoutRootPath =
-    }
-    persistence {
-        storagePid =
-    }
-    settings {
-        itemsPerPage = 10
+    tx_maiaccount_stories {
+        view {
+            templateRootPath =
+            partialRootPath =
+            layoutRootPath =
+        }
+        persistence {
+            storagePid =
+        }
+        settings {
+            itemsPerPage = 10
+        }
     }
 }

@@ -4,11 +4,28 @@ declare(strict_types=1);
 
 namespace Maispace\MaiAccount\Domain\Model;
 
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUser as CoreFrontendUser;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class FrontendUser extends CoreFrontendUser
+/**
+ * Extends the TYPO3 fe_users record as an Extbase domain model.
+ * TYPO3\CMS\Extbase\Domain\Model\FrontendUser was removed in TYPO3 v14;
+ * standard fe_users fields are declared here directly.
+ */
+class FrontendUser extends AbstractEntity
 {
+    // ── Standard fe_users fields ────────────────────────────────────────────
+
+    protected string $username = '';
+
+    protected string $firstName = '';
+
+    protected string $lastName = '';
+
+    protected string $email = '';
+
+    // ── Extension fields ────────────────────────────────────────────────────
+
     protected bool $txMaiaccountMfaEnabled = false;
 
     protected string $txMaiaccountMfaSecret = '';
@@ -24,7 +41,6 @@ class FrontendUser extends CoreFrontendUser
 
     public function __construct()
     {
-        parent::__construct();
         $this->txMaiaccountInterests = new ObjectStorage();
     }
 
@@ -32,6 +48,50 @@ class FrontendUser extends CoreFrontendUser
     {
         $this->txMaiaccountInterests = new ObjectStorage();
     }
+
+    // ── Standard fe_users getters / setters ─────────────────────────────────
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    // ── Extension getters / setters ─────────────────────────────────────────
 
     public function isTxMaiaccountMfaEnabled(): bool
     {

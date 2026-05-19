@@ -7,16 +7,13 @@ namespace Maispace\MaiAccount\Service;
 use Maispace\MaiAccount\Domain\Model\Reminder;
 use Maispace\MaiAccount\Domain\Repository\ReminderRepository;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 
 class ReminderService
 {
     public function __construct(
         private readonly ReminderRepository $reminderRepository,
-        private readonly PersistenceManagerInterface $persistenceManager,
         private readonly ConnectionPool $connectionPool,
-    ) {
-    }
+    ) {}
 
     public function markAsSent(Reminder $reminder): void
     {

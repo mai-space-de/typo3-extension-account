@@ -22,7 +22,7 @@ class ReminderRepository extends Repository
             $query->logicalAnd(
                 $query->lessThanOrEqual('remindAt', $now->getTimestamp()),
                 $query->equals('sent', false),
-            )
+            ),
         );
 
         return $query->execute();
@@ -33,7 +33,7 @@ class ReminderRepository extends Repository
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching(
-            $query->equals('feUser', $feUserUid)
+            $query->equals('feUser', $feUserUid),
         );
 
         return $query->execute();

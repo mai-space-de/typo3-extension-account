@@ -1,2 +1,13 @@
 parameters:
-    ignoreErrors:
+	ignoreErrors:
+		-
+			message: '#^Parameter \#1 \$className of static method TYPO3\\CMS\\Core\\Utility\\GeneralUtility\:\:makeInstance\(\) expects class\-string\<Maispace\\MaiNewsletter\\Service\\ConfirmationMailer\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: Classes/Controller/AccountController.php
+
+		-
+			message: '#^Parameter \#1 \$className of static method TYPO3\\CMS\\Core\\Utility\\GeneralUtility\:\:makeInstance\(\) expects class\-string\<Maispace\\MaiNewsletter\\Service\\SubscriberService\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: Classes/Controller/AccountController.php

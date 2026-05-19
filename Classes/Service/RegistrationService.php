@@ -16,8 +16,7 @@ class RegistrationService
         private readonly PasswordHashFactory $passwordHashFactory,
         private readonly ConnectionPool $connectionPool,
         private readonly Random $random,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array{uid: int, token: string, expiresAt: int}
@@ -54,7 +53,7 @@ class RegistrationService
             ])
             ->executeStatement();
 
-        $uid = (int)$this->connectionPool
+        $uid = (int) $this->connectionPool
             ->getConnectionForTable('fe_users')
             ->lastInsertId();
 
@@ -79,7 +78,7 @@ class RegistrationService
             return false;
         }
 
-        if ((int)$row['tx_maiaccount_confirm_expires'] > 0 && (int)$row['tx_maiaccount_confirm_expires'] < time()) {
+        if ((int) $row['tx_maiaccount_confirm_expires'] > 0 && (int) $row['tx_maiaccount_confirm_expires'] < time()) {
             return false;
         }
 
@@ -89,7 +88,7 @@ class RegistrationService
             ->set('tx_maiaccount_confirm_token', '')
             ->set('tx_maiaccount_confirm_expires', 0)
             ->set('tstamp', time())
-            ->where($updateQb->expr()->eq('uid', $updateQb->createNamedParameter((int)$row['uid'])))
+            ->where($updateQb->expr()->eq('uid', $updateQb->createNamedParameter((int) $row['uid'])))
             ->executeStatement();
 
         return true;
@@ -98,7 +97,7 @@ class RegistrationService
     public function isUsernameAvailable(string $username): bool
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable('fe_users');
-        $count = (int)$queryBuilder
+        $count = (int) $queryBuilder
             ->count('uid')
             ->from('fe_users')
             ->where($queryBuilder->expr()->eq('username', $queryBuilder->createNamedParameter($username)))
@@ -111,7 +110,7 @@ class RegistrationService
     public function isEmailAvailable(string $email): bool
     {
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable('fe_users');
-        $count = (int)$queryBuilder
+        $count = (int) $queryBuilder
             ->count('uid')
             ->from('fe_users')
             ->where($queryBuilder->expr()->eq('email', $queryBuilder->createNamedParameter($email)))

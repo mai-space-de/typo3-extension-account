@@ -38,8 +38,7 @@ class AccountController extends AbstractActionController
         private readonly PersistenceManagerInterface $persistenceManager,
         private readonly SiteFinder $siteFinder,
         private readonly Context $context,
-    ) {
-    }
+    ) {}
 
     public function loginAction(): ResponseInterface
     {
@@ -54,7 +53,7 @@ class AccountController extends AbstractActionController
             $feUser->logoff();
         }
 
-        $redirectPid = (int)($this->settings['logoutRedirectPid'] ?? 0);
+        $redirectPid = (int) ($this->settings['logoutRedirectPid'] ?? 0);
         if ($redirectPid > 0) {
             return $this->redirect(null, null, null, [], $redirectPid);
         }
@@ -98,15 +97,15 @@ class AccountController extends AbstractActionController
             return $this->redirect('register');
         }
 
-        $storagePid = (int)($this->settings['registerStoragePid'] ?? ($this->settings['persistence']['storagePid'] ?? 0));
+        $storagePid = (int) ($this->settings['registerStoragePid'] ?? ($this->settings['persistence']['storagePid'] ?? 0));
         $result = $this->registrationService->register($username, $email, $password, $firstName, $lastName, $storagePid);
 
-        $confirmPid = (int)($this->settings['registerConfirmPid'] ?? 0);
+        $confirmPid = (int) ($this->settings['registerConfirmPid'] ?? 0);
         $builder = $this->uriBuilder->reset()->setCreateAbsoluteUri(true);
         if ($confirmPid > 0) {
             $builder->setTargetPageUid($confirmPid);
         }
-        $confirmUrl = (string)$builder->uriFor(
+        $confirmUrl = (string) $builder->uriFor(
             'confirm',
             ['token' => $result['token']],
             'Account',
@@ -132,7 +131,7 @@ class AccountController extends AbstractActionController
 
     public function profileAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->redirectToLogin();
@@ -150,7 +149,7 @@ class AccountController extends AbstractActionController
         string $newPassword,
         string $newPasswordConfirm,
     ): ResponseInterface {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->redirectToLogin();
@@ -162,7 +161,7 @@ class AccountController extends AbstractActionController
         }
 
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable('fe_users');
-        $currentHash = (string)$queryBuilder
+        $currentHash = (string) $queryBuilder
             ->select('password')
             ->from('fe_users')
             ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($feUserUid)))
@@ -198,7 +197,7 @@ class AccountController extends AbstractActionController
 
     public function interestsAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->redirectToLogin();
@@ -206,7 +205,7 @@ class AccountController extends AbstractActionController
 
         $request = $this->request;
         if ($request->getMethod() === 'POST' && $request->hasArgument('selectedInterests')) {
-            $selected = (array)$request->getArgument('selectedInterests');
+            $selected = (array) $request->getArgument('selectedInterests');
             $this->saveInterests($feUserUid, $selected);
             $this->flashSuccess('Interests updated.');
 
@@ -226,7 +225,7 @@ class AccountController extends AbstractActionController
 
     public function remindersAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->redirectToLogin();
@@ -238,8 +237,8 @@ class AccountController extends AbstractActionController
             && $request->hasArgument('reminderTitle')
             && $request->hasArgument('reminderAt')
         ) {
-            $title = trim((string)$request->getArgument('reminderTitle'));
-            $remindAtRaw = (string)$request->getArgument('reminderAt');
+            $title = trim((string) $request->getArgument('reminderTitle'));
+            $remindAtRaw = (string) $request->getArgument('reminderAt');
 
             if ($title !== '' && $remindAtRaw !== '') {
                 $remindAt = \DateTimeImmutable::createFromFormat('Y-m-d\TH:i', $remindAtRaw)
@@ -272,7 +271,7 @@ class AccountController extends AbstractActionController
 
     public function newsletterOptInAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->redirectToLogin();
@@ -280,7 +279,7 @@ class AccountController extends AbstractActionController
 
         $request = $this->request;
         if ($request->getMethod() === 'POST') {
-            $optIn = (bool)($request->hasArgument('optIn') ? (int)$request->getArgument('optIn') : 0);
+            $optIn = (bool) ($request->hasArgument('optIn') ? (int) $request->getArgument('optIn') : 0);
             $this->handleNewsletterOptInToggle($feUserUid, $optIn);
 
             return $this->redirect('newsletterOptIn');
@@ -302,7 +301,7 @@ class AccountController extends AbstractActionController
             ->executeQuery()
             ->fetchAssociative();
 
-        $email = (string)($row['email'] ?? '');
+        $email = (string) ($row['email'] ?? '');
 
         $updateQb = $this->connectionPool->getQueryBuilderForTable('fe_users');
         $updateQb
@@ -325,7 +324,7 @@ class AccountController extends AbstractActionController
             return;
         }
 
-        $storagePid = (int)($this->settings['newsletterSubscriberStoragePid'] ?? 0);
+        $storagePid = (int) ($this->settings['newsletterSubscriberStoragePid'] ?? 0);
         $siteIdentifier = $this->resolveSiteIdentifier();
 
         $subscriberService = GeneralUtility::makeInstance($subscriberServiceClass);
@@ -348,14 +347,14 @@ class AccountController extends AbstractActionController
 
     private function buildNewsletterUri(string $action, array $arguments): string
     {
-        $pageUid = (int)($this->settings['newsletterConfirmPid'] ?? 0);
+        $pageUid = (int) ($this->settings['newsletterConfirmPid'] ?? 0);
 
         $builder = $this->uriBuilder->reset()->setCreateAbsoluteUri(true);
         if ($pageUid > 0) {
             $builder->setTargetPageUid($pageUid);
         }
 
-        return (string)$builder->uriFor(
+        return (string) $builder->uriFor(
             $action,
             $arguments,
             'Newsletter',
@@ -383,7 +382,7 @@ class AccountController extends AbstractActionController
     private function saveInterests(int $feUserUid, array $selectedInterestUids): void
     {
         $selectedInterestUids = array_values(array_unique(array_map('intval', $selectedInterestUids)));
-        $selectedInterestUids = array_filter($selectedInterestUids, static fn (int $uid): bool => $uid > 0);
+        $selectedInterestUids = array_filter($selectedInterestUids, static fn(int $uid): bool => $uid > 0);
 
         $table = 'tx_maiaccount_feuser_interest_mm';
         $connection = $this->connectionPool->getConnectionForTable($table);
@@ -415,7 +414,7 @@ class AccountController extends AbstractActionController
 
     private function redirectToLogin(): ResponseInterface
     {
-        $loginPid = (int)($this->settings['loginRedirectPid'] ?? 0);
+        $loginPid = (int) ($this->settings['loginRedirectPid'] ?? 0);
 
         if ($loginPid > 0) {
             return $this->redirect(null, null, null, [], $loginPid);

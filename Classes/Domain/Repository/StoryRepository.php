@@ -19,7 +19,7 @@ class StoryRepository extends Repository
     {
         $query = $this->createQuery();
         $query->matching(
-            $query->equals('status', Story::STATUS_PUBLISHED)
+            $query->equals('status', Story::STATUS_PUBLISHED),
         );
 
         return $query->execute();
@@ -30,7 +30,7 @@ class StoryRepository extends Repository
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching(
-            $query->equals('feUser', $feUserUid)
+            $query->equals('feUser', $feUserUid),
         );
 
         return $query->execute();

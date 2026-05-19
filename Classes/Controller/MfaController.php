@@ -19,12 +19,11 @@ class MfaController extends AbstractActionController
         private readonly MfaService $mfaService,
         private readonly FrontendUserRepository $frontendUserRepository,
         private readonly Context $context,
-    ) {
-    }
+    ) {}
 
     public function setupAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->htmlResponse();
@@ -32,7 +31,7 @@ class MfaController extends AbstractActionController
 
         $user = $this->frontendUserRepository->findByUid($feUserUid);
         $secret = $this->mfaService->generateSecret();
-        $qrCodeUri = $this->mfaService->getQrCodeUri($secret, (string)$user->getUsername());
+        $qrCodeUri = $this->mfaService->getQrCodeUri($secret, (string) $user->getUsername());
 
         $this->view->assignMultiple([
             'user' => $user,
@@ -45,7 +44,7 @@ class MfaController extends AbstractActionController
 
     public function verifyAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->htmlResponse();
@@ -56,7 +55,7 @@ class MfaController extends AbstractActionController
 
     public function disableAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->htmlResponse();

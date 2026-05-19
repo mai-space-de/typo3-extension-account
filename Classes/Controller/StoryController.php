@@ -20,8 +20,7 @@ class StoryController extends AbstractActionController
     public function __construct(
         private readonly StoryRepository $storyRepository,
         private readonly Context $context,
-    ) {
-    }
+    ) {}
 
     public function listAction(): ResponseInterface
     {
@@ -38,7 +37,7 @@ class StoryController extends AbstractActionController
 
     public function submitAction(): ResponseInterface
     {
-        $feUserUid = (int)$this->context->getPropertyFromAspect('frontend.user', 'id');
+        $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
 
         if ($feUserUid === 0) {
             return $this->htmlResponse();
@@ -49,7 +48,7 @@ class StoryController extends AbstractActionController
 
     public function detailAction(): ResponseInterface
     {
-        $uid = (int)($this->request->hasArgument('uid') ? $this->request->getArgument('uid') : 0);
+        $uid = (int) ($this->request->hasArgument('uid') ? $this->request->getArgument('uid') : 0);
         $story = $uid > 0 ? $this->storyRepository->findByUid($uid) : null;
 
         $this->view->assign('story', $story);
