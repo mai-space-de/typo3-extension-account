@@ -9,19 +9,10 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../*",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
     "require": {
         "php": "^8.2",
-        "maispace/mai-base": "@dev",
-        "maispace/mai-mail": "@dev",
+        "maispace/mai-base": "^14.0",
+        "maispace/mai-mail": "^14.0",
         "paragonie/constant_time_encoding": "^2.0",
         "spomky-labs/otphp": "^11.0",
         "typo3/cms-core": "^14.1",
