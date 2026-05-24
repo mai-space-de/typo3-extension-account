@@ -87,5 +87,7 @@
     "suggest": {
         "maispace/mai-newsletter": "Newsletter opt-in feature",
         "maispace/mai-member": "Member record linking on profile"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
