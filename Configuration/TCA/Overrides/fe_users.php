@@ -37,26 +37,36 @@ $lang = Helper::localLangHelperFactory('mai_account', 'Default/locallang_tca.xlf
     ->setConfig((new CheckboxConfig())->setRenderType('checkboxToggle'))
     ->registerField();
 
-(new Field('fe_users', 'tx_maiaccount_member_uid', $lang('fe_users.tx_maiaccount_member_uid')))
-    ->setConfig([
-        'type' => 'group',
-        'allowed' => 'tx_maimember_member',
-        'size' => 1,
-        'maxitems' => 1,
-        'minitems' => 0,
-    ])
-    ->registerField();
+if (ExtensionManagementUtility::isLoaded('mai_member')) {
+    (new Field('fe_users', 'tx_maiaccount_member_uid', $lang('fe_users.tx_maiaccount_member_uid')))
+        ->setConfig([
+            'type' => 'group',
+            'allowed' => 'tx_maimember_member',
+            'size' => 1,
+            'maxitems' => 1,
+            'minitems' => 0,
+        ])
+        ->registerField();
+}
 
 (new Field('fe_users', 'tx_maiaccount_confirm_token', $lang('fe_users.tx_maiaccount_confirm_token')))
     ->setConfig((new InputConfig())->setSize(50)->setMax(128)->setReadOnly())
     ->registerField();
 
-ExtensionManagementUtility::addToAllTCAtypes(
-    'fe_users',
-    '--div--;' . $lang('tab.account') . ',
+$accountFields = '--div--;' . $lang('tab.account') . ',
     tx_maiaccount_mfa_enabled, tx_maiaccount_mfa_secret,
     tx_maiaccount_interests,
-    tx_maiaccount_newsletter_optin,
-    tx_maiaccount_member_uid,
-    tx_maiaccount_confirm_token',
+    tx_maiaccount_newsletter_optin,';
+
+if (ExtensionManagementUtility::isLoaded('mai_member')) {
+    $accountFields .= '
+    tx_maiaccount_member_uid,';
+}
+
+$accountFields .= '
+    tx_maiaccount_confirm_token';
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'fe_users',
+    $accountFields,
 );

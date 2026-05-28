@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Maispace\MaiAccount\Domain\Model;
 
+use Maispace\MaiMember\Domain\Model\Member;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -32,7 +34,8 @@ class FrontendUser extends AbstractEntity
 
     protected bool $txMaiaccountNewsletterOptin = false;
 
-    protected int $txMaiaccountMemberUid = 0;
+    #[Lazy]
+    protected ?Member $txMaiaccountMemberUid = null;
 
     /**
      * @var ObjectStorage<Interest>
@@ -123,14 +126,14 @@ class FrontendUser extends AbstractEntity
         $this->txMaiaccountNewsletterOptin = $optin;
     }
 
-    public function getTxMaiaccountMemberUid(): int
+    public function getTxMaiaccountMemberUid(): ?Member
     {
         return $this->txMaiaccountMemberUid;
     }
 
-    public function setTxMaiaccountMemberUid(int $uid): void
+    public function setTxMaiaccountMemberUid(?Member $member): void
     {
-        $this->txMaiaccountMemberUid = $uid;
+        $this->txMaiaccountMemberUid = $member;
     }
 
     /**

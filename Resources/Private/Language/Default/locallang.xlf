@@ -117,6 +117,12 @@
             <trans-unit id="email.reminder.when">
                 <source>Scheduled for:</source>
             </trans-unit>
+            <trans-unit id="profile.memberCard">
+                <source>Your Membership</source>
+            </trans-unit>
+            <trans-unit id="profile.memberSince">
+                <source>Member Since</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

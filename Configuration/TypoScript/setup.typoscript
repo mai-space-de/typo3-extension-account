@@ -24,6 +24,8 @@ plugin {
             registerStoragePid = {$plugin.tx_maiaccount_account.settings.registerStoragePid}
             newsletterSubscriberStoragePid = {$plugin.tx_maiaccount_account.settings.newsletterSubscriberStoragePid}
             newsletterConfirmPid = {$plugin.tx_maiaccount_account.settings.newsletterConfirmPid}
+            mfaVerifyPid = {$plugin.tx_maiaccount_account.settings.mfaVerifyPid}
+            mfaExemptPids = {$plugin.tx_maiaccount_account.settings.mfaExemptPids}
         }
     }
     tx_maiaccount_mfa {

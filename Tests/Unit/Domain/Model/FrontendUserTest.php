@@ -6,6 +6,7 @@ namespace Maispace\MaiAccount\Tests\Unit\Domain\Model;
 
 use Maispace\MaiAccount\Domain\Model\FrontendUser;
 use Maispace\MaiAccount\Domain\Model\Interest;
+use Maispace\MaiMember\Domain\Model\Member;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -72,13 +73,6 @@ final class FrontendUserTest extends TestCase
     {
         $subject = new FrontendUser();
         self::assertFalse($subject->isTxMaiaccountNewsletterOptin());
-    }
-
-    #[Test]
-    public function defaultMemberUidIsZero(): void
-    {
-        $subject = new FrontendUser();
-        self::assertSame(0, $subject->getTxMaiaccountMemberUid());
     }
 
     #[Test]
@@ -214,20 +208,30 @@ final class FrontendUserTest extends TestCase
     // ── memberUid getter / setter ───────────────────────────────────────────
 
     #[Test]
-    public function setMemberUidStoresTheValue(): void
+    public function defaultMemberUidIsNull(): void
     {
         $subject = new FrontendUser();
-        $subject->setTxMaiaccountMemberUid(17);
-        self::assertSame(17, $subject->getTxMaiaccountMemberUid());
+        self::assertNull($subject->getTxMaiaccountMemberUid());
+    }
+
+    #[Test]
+    public function setMemberUidStoresMemberInstance(): void
+    {
+        $subject = new FrontendUser();
+        $member = new Member();
+        $subject->setTxMaiaccountMemberUid($member);
+        self::assertSame($member, $subject->getTxMaiaccountMemberUid());
     }
 
     #[Test]
     public function setMemberUidOverwritesPreviousValue(): void
     {
         $subject = new FrontendUser();
-        $subject->setTxMaiaccountMemberUid(17);
-        $subject->setTxMaiaccountMemberUid(99);
-        self::assertSame(99, $subject->getTxMaiaccountMemberUid());
+        $first = new Member();
+        $second = new Member();
+        $subject->setTxMaiaccountMemberUid($first);
+        $subject->setTxMaiaccountMemberUid($second);
+        self::assertSame($second, $subject->getTxMaiaccountMemberUid());
     }
 
     // ── interests getter / setter ───────────────────────────────────────────

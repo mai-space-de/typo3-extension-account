@@ -78,6 +78,24 @@ CREATE TABLE fe_users (
     KEY tx_maiaccount_confirm_token (tx_maiaccount_confirm_token)
 );
 
+CREATE TABLE tx_maiaccount_password_reset_log (
+    uid         int(11) NOT NULL auto_increment,
+    pid         int(11) NOT NULL DEFAULT 0,
+    crdate      int(11) NOT NULL DEFAULT 0,
+    tstamp      int(11) NOT NULL DEFAULT 0,
+
+    email       varchar(255) NOT NULL DEFAULT '',
+    ip_address  varchar(45) NOT NULL DEFAULT '',
+    fe_user     int(11) NOT NULL DEFAULT 0,
+    status      varchar(32) NOT NULL DEFAULT 'requested',
+
+    PRIMARY KEY (uid),
+    KEY pid (pid),
+    KEY email (email),
+    KEY fe_user (fe_user),
+    KEY status_crdate (status, crdate)
+);
+
 CREATE TABLE tx_maiaccount_feuser_interest_mm (
     uid_local       int(11) unsigned NOT NULL DEFAULT 0,
     uid_foreign     int(11) unsigned NOT NULL DEFAULT 0,

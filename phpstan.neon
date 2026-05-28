@@ -6,3 +6,7 @@ parameters:
   level: 5
   paths:
     - Classes
+  scanFiles:
+    - vendor/maispace/mai-member/Classes/Domain/Model/Member.php
+  scanDirectories:
+    - vendor/maispace/mai-member/Classes/Domain/Model/

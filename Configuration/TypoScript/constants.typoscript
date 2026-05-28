@@ -22,6 +22,8 @@ plugin {
             registerStoragePid =
             newsletterSubscriberStoragePid =
             newsletterConfirmPid =
+            mfaVerifyPid =
+            mfaExemptPids =
         }
     }
     tx_maiaccount_mfa {

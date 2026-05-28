@@ -12,6 +12,8 @@ $EM_CONF[$_EXTKEY] = [
             'typo3' => '13.4.0-14.99.99',
         ],
         'conflicts' => [],
-        'suggests' => [],
+        'suggests' => [
+            'mai_member' => '13.4.0-14.99.99',
+        ],
     ],
 ];

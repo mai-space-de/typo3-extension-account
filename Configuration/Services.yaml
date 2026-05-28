@@ -21,3 +21,6 @@ services:
 
   Maispace\MaiAccount\Service\AccountMailer:
     public: true
+
+  Maispace\MaiAccount\Service\PasswordResetLogService:
+    public: true

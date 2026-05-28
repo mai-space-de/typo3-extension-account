@@ -139,7 +139,10 @@ class AccountController extends AbstractActionController
 
         $user = $this->frontendUserRepository->findByUid($feUserUid);
 
-        $this->view->assign('user', $user);
+        $this->view->assignMultiple([
+            'user' => $user,
+            'memberAvailable' => ExtensionManagementUtility::isLoaded('mai_member'),
+        ]);
 
         return $this->htmlResponse();
     }

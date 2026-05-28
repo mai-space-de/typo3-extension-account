@@ -22,6 +22,23 @@
                 <f:form.submit value="{f:translate(key: 'profile.save', extensionName: 'mai_account', default: 'Save')}" class="btn btn-primary"/>
             </div>
         </f:form>
+        <f:if condition="{memberAvailable}">
+            <f:if condition="{user.txMaiaccountMemberUid}">
+                <div class="mai-account-profile__member-card">
+                    <h3><f:translate key="profile.memberCard" extensionName="mai_account" default="Your Membership"/></h3>
+                    <dl class="mai-member-card__details">
+                        <dt><f:translate key="member.name" extensionName="mai_member" default="Name"/></dt>
+                        <dd>{user.txMaiaccountMemberUid.fullName}</dd>
+                        <dt><f:translate key="member.email" extensionName="mai_member" default="Email"/></dt>
+                        <dd>{user.txMaiaccountMemberUid.email}</dd>
+                        <f:if condition="{user.txMaiaccountMemberUid.joinDate}">
+                            <dt><f:translate key="profile.memberSince" extensionName="mai_account" default="Member Since"/></dt>
+                            <dd>{user.txMaiaccountMemberUid.joinDate -> f:format.date(format: 'd.m.Y')}</dd>
+                        </f:if>
+                    </dl>
+                </div>
+            </f:if>
+        </f:if>
         <div class="mai-account-profile__password">
             <h3><f:translate key="profile.changePassword" extensionName="mai_account" default="Change Password"/></h3>
             <f:form action="changePassword" method="post">
