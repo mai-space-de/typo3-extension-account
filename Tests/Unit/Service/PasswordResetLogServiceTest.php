@@ -9,6 +9,7 @@ use Maispace\MaiAccount\Service\PasswordResetLogService;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Expression\ExpressionBuilder;
@@ -17,12 +18,14 @@ use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 final class PasswordResetLogServiceTest extends TestCase
 {
     private ConnectionPool&MockObject $connectionPool;
+    private LoggerInterface&MockObject $logger;
     private PasswordResetLogService $subject;
 
     protected function setUp(): void
     {
         $this->connectionPool = $this->createMock(ConnectionPool::class);
-        $this->subject = new PasswordResetLogService($this->connectionPool);
+        $this->logger = $this->createMock(LoggerInterface::class);
+        $this->subject = new PasswordResetLogService($this->connectionPool, $this->logger);
     }
 
     #[Test]
@@ -49,6 +52,49 @@ final class PasswordResetLogServiceTest extends TestCase
         $uid = $this->subject->logResetRequest('user@example.com', '192.168.1.1', 42);
 
         self::assertSame(17, $uid);
+    }
+
+    #[Test]
+    public function logResetRequestEmitsWarningLog(): void
+    {
+        $connection = $this->createMock(Connection::class);
+        $connection->method('insert');
+        $connection->method('lastInsertId')->willReturn('5');
+
+        $this->connectionPool->method('getConnectionForTable')->willReturn($connection);
+
+        $this->logger
+            ->expects(self::once())
+            ->method('warning')
+            ->with(
+                'Password reset requested',
+                self::callback(
+                    static fn(array $ctx): bool =>
+                        $ctx['event'] === 'reset_requested'
+                        && $ctx['email'] === 'log@example.com'
+                        && $ctx['ip_address'] === '10.0.0.1'
+                        && $ctx['fe_user'] === 7
+                        && $ctx['log_uid'] === 5,
+                ),
+            );
+
+        $this->subject->logResetRequest('log@example.com', '10.0.0.1', 7);
+    }
+
+    #[Test]
+    public function loggerIsOptionalAndNoWarningThrownWithoutIt(): void
+    {
+        $subject = new PasswordResetLogService($this->connectionPool);
+
+        $connection = $this->createMock(Connection::class);
+        $connection->method('insert');
+        $connection->method('lastInsertId')->willReturn('1');
+
+        $this->connectionPool->method('getConnectionForTable')->willReturn($connection);
+
+        $uid = $subject->logResetRequest('no-logger@example.com', '127.0.0.1', 1);
+
+        self::assertSame(1, $uid);
     }
 
     #[Test]
@@ -120,6 +166,46 @@ final class PasswordResetLogServiceTest extends TestCase
     }
 
     #[Test]
+    public function logResetCompletedEmitsWarningLogWhenNoOpenRequestFound(): void
+    {
+        $selectResult = $this->createMock(Result::class);
+        $selectResult->method('fetchAssociative')->willReturn(false);
+
+        $expr = $this->createMock(ExpressionBuilder::class);
+        $expr->method('eq')->willReturnArgument(0);
+
+        $subQb = $this->createMock(QueryBuilder::class);
+        $subQb->method('select')->willReturnSelf();
+        $subQb->method('from')->willReturnSelf();
+        $subQb->method('where')->willReturnSelf();
+        $subQb->method('orderBy')->willReturnSelf();
+        $subQb->method('setMaxResults')->willReturnSelf();
+        $subQb->method('expr')->willReturn($expr);
+        $subQb->method('createNamedParameter')->willReturnCallback(self::createNamedParameterCallback());
+        $subQb->method('executeQuery')->willReturn($selectResult);
+
+        $qb = $this->createMock(QueryBuilder::class);
+
+        $this->connectionPool
+            ->method('getQueryBuilderForTable')
+            ->willReturnOnConsecutiveCalls($qb, $subQb);
+
+        $this->logger
+            ->expects(self::once())
+            ->method('warning')
+            ->with(
+                'Password reset completion attempted but no open request found',
+                self::callback(
+                    static fn(array $ctx): bool =>
+                        $ctx['event'] === 'reset_completion_without_request'
+                        && $ctx['email'] === 'ghost@example.com',
+                ),
+            );
+
+        $this->subject->logResetCompleted('ghost@example.com');
+    }
+
+    #[Test]
     public function findFailedSequencesReturnsEntriesPastCutoff(): void
     {
         $now = time();
@@ -163,6 +249,50 @@ final class PasswordResetLogServiceTest extends TestCase
         self::assertCount(2, $failed);
         self::assertSame(1, $failed[0]['uid']);
         self::assertSame('old@example.com', $failed[0]['email']);
+    }
+
+    #[Test]
+    public function findFailedSequencesEmitsWarningLogPerFailedEntry(): void
+    {
+        $now = time();
+        $rows = [
+            ['uid' => 10, 'email' => 'a@example.com', 'ip_address' => '10.0.0.1', 'fe_user' => 3, 'crdate' => $now - 100000],
+            ['uid' => 11, 'email' => 'b@example.com', 'ip_address' => '10.0.0.2', 'fe_user' => 4, 'crdate' => $now - 200000],
+        ];
+
+        $result = $this->createMock(Result::class);
+        $result->method('fetchAllAssociative')->willReturn($rows);
+
+        $expr = $this->createMock(ExpressionBuilder::class);
+        $expr->method('eq')->willReturnArgument(0);
+        $expr->method('lt')->willReturnArgument(0);
+
+        $qb = $this->createMock(QueryBuilder::class);
+        $qb->method('select')->willReturnSelf();
+        $qb->method('from')->willReturnSelf();
+        $qb->method('where')->willReturnSelf();
+        $qb->method('orderBy')->willReturnSelf();
+        $qb->method('expr')->willReturn($expr);
+        $qb->method('createNamedParameter')->willReturnCallback(self::createNamedParameterCallback());
+        $qb->method('executeQuery')->willReturn($result);
+
+        $this->connectionPool->method('getQueryBuilderForTable')->willReturn($qb);
+
+        $this->logger
+            ->expects(self::exactly(2))
+            ->method('warning')
+            ->with(
+                'Incomplete password reset sequence detected',
+                self::callback(
+                    static fn(array $ctx): bool =>
+                        $ctx['event'] === 'failed_reset_sequence'
+                        && isset($ctx['log_uid'], $ctx['email'], $ctx['ip_address']),
+                ),
+            );
+
+        $failed = $this->subject->findFailedSequences();
+
+        self::assertCount(2, $failed);
     }
 
     #[Test]

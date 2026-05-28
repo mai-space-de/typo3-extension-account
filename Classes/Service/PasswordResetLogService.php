@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Maispace\MaiAccount\Service;
 
 use Doctrine\DBAL\ParameterType;
+use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 
 /**
@@ -14,6 +15,10 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
  * reset is completed the corresponding log entry is marked as complete.
  * Entries that stay incomplete past a configurable window are flagged as
  * failed, enabling security monitoring and incident response.
+ *
+ * A PSR-3 logger is used to emit structured security log entries so that
+ * intrusion-detection tooling and log-aggregators can consume events in
+ * real time without polling the database table.
  */
 class PasswordResetLogService
 {
@@ -24,6 +29,7 @@ class PasswordResetLogService
 
     public function __construct(
         private readonly ConnectionPool $connectionPool,
+        private readonly ?LoggerInterface $logger = null,
     ) {}
 
     /**
@@ -46,7 +52,18 @@ class PasswordResetLogService
             'status' => 'requested',
         ]);
 
-        return (int) $connection->lastInsertId();
+        $uid = (int) $connection->lastInsertId();
+
+        $this->logger?->warning('Password reset requested', [
+            'component' => 'mai_account.password_reset',
+            'event' => 'reset_requested',
+            'email' => $email,
+            'ip_address' => $ipAddress,
+            'fe_user' => $feUserUid,
+            'log_uid' => $uid,
+        ]);
+
+        return $uid;
     }
 
     /**
@@ -68,6 +85,11 @@ class PasswordResetLogService
 
         $row = $sub->executeQuery()->fetchAssociative();
         if ($row === false) {
+            $this->logger?->warning('Password reset completion attempted but no open request found', [
+                'component' => 'mai_account.password_reset',
+                'event' => 'reset_completion_without_request',
+                'email' => $email,
+            ]);
             return;
         }
 
@@ -98,8 +120,22 @@ class PasswordResetLogService
             ->orderBy('crdate', 'DESC')
             ->executeQuery();
 
-        /** @var list<array{uid: int, email: string, ip_address: string, fe_user: int, crdate: int}> */
-        return $result->fetchAllAssociative();
+        /** @var list<array{uid: int, email: string, ip_address: string, fe_user: int, crdate: int}> $rows */
+        $rows = $result->fetchAllAssociative();
+
+        foreach ($rows as $row) {
+            $this->logger?->warning('Incomplete password reset sequence detected', [
+                'component' => 'mai_account.password_reset',
+                'event' => 'failed_reset_sequence',
+                'log_uid' => (int) $row['uid'],
+                'email' => $row['email'],
+                'ip_address' => $row['ip_address'],
+                'fe_user' => (int) $row['fe_user'],
+                'crdate' => (int) $row['crdate'],
+            ]);
+        }
+
+        return $rows;
     }
 
     /**
