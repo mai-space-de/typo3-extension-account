@@ -42,7 +42,7 @@ class StoryBackendController extends AbstractBackendController
             'stories' => $this->storyRepository->findAll(),
         ]);
 
-        return $this->renderModuleResponse($moduleTemplate, 'Backend/StoryBackend/Index');
+        return $this->renderModuleResponse($moduleTemplate, 'Index');
     }
 
     public function approveAction(Story $story): ResponseInterface
