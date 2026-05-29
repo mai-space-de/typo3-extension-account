@@ -46,6 +46,20 @@ class AccountMailer
         $this->mailService->queue($email, $subject, $view->render('Reminder'));
     }
 
+    public function sendStoryPublished(string $email, string $firstName, string $storyTitle): void
+    {
+        $view = $this->createView();
+        $view->assignMultiple([
+            'firstName' => $firstName,
+            'storyTitle' => $storyTitle,
+        ]);
+
+        $subject = (string) (LocalizationUtility::translate('email.storyPublished.subject', 'mai_account')
+            ?: 'Your story has been published');
+
+        $this->mailService->queue($email, $subject, $view->render('StoryPublished'));
+    }
+
     private function createView(): ViewInterface
     {
         return $this->viewFactory->create(new ViewFactoryData(

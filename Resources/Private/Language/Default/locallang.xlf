@@ -117,6 +117,15 @@
             <trans-unit id="email.reminder.when">
                 <source>Scheduled for:</source>
             </trans-unit>
+            <trans-unit id="email.storyPublished.subject">
+                <source>Your story has been published</source>
+            </trans-unit>
+            <trans-unit id="email.storyPublished.greetingNamed">
+                <source>Hello %s,</source>
+            </trans-unit>
+            <trans-unit id="email.storyPublished.body">
+                <source>Your story has been published and is now visible on our website.</source>
+            </trans-unit>
             <trans-unit id="profile.memberCard">
                 <source>Your Membership</source>
             </trans-unit>

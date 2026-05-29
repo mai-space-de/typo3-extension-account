@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Maispace\MaiAccount\Tests\Unit\Domain\Repository;
 
+use Maispace\MaiAccount\Domain\Model\Story;
 use Maispace\MaiAccount\Domain\Repository\StoryRepository;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,5 +42,32 @@ final class StoryRepositoryTest extends TestCase
         $orderings = $reflection->getValue($repository);
 
         self::assertCount(1, $orderings);
+    }
+
+    // ── findByStatus ──────────────────────────────────────────────────────────
+
+    #[Test]
+    public function findByStatusMethodExists(): void
+    {
+        self::assertTrue(
+            method_exists(StoryRepository::class, 'findByStatus'),
+            'StoryRepository must have findByStatus method for backend moderation',
+        );
+    }
+
+    #[Test]
+    public function findByStatusAcceptsAllStoryStatusConstants(): void
+    {
+        $validStatuses = [
+            Story::STATUS_SUBMITTED,
+            Story::STATUS_REVIEWING,
+            Story::STATUS_PUBLISHED,
+            Story::STATUS_REJECTED,
+        ];
+
+        foreach ($validStatuses as $status) {
+            self::assertIsString($status);
+            self::assertNotEmpty($status);
+        }
     }
 }

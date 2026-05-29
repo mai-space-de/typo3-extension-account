@@ -1,0 +1,78 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+<be:pageRenderer />
+
+<be:moduleLayout>
+    <f:render section="Content" />
+</be:moduleLayout>
+
+<f:section name="Content">
+    <div class="module-body">
+        <h1><f:translate key="LLL:EXT:mai_account/Resources/Private/Language/locallang.xlf:story.list" default="Stories" /></h1>
+
+        <f:if condition="{stories}">
+            <f:then>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author (UID)</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <f:for each="{stories}" as="story">
+                            <tr>
+                                <td>{story.title}</td>
+                                <td>{story.feUser}</td>
+                                <td>
+                                    <f:switch expression="{story.status}">
+                                        <f:case value="submitted">
+                                            <span class="label label-info">Submitted</span>
+                                        </f:case>
+                                        <f:case value="reviewing">
+                                            <span class="label label-warning">Reviewing</span>
+                                        </f:case>
+                                        <f:case value="published">
+                                            <span class="label label-success">Published</span>
+                                        </f:case>
+                                        <f:case value="rejected">
+                                            <span class="label label-danger">Rejected</span>
+                                        </f:case>
+                                        <f:defaultCase>
+                                            {story.status}
+                                        </f:defaultCase>
+                                    </f:switch>
+                                </td>
+                                <td>
+                                    <f:if condition="{story.submittedAt}">
+                                        <f:format.date format="d.m.Y H:i">{story.submittedAt}</f:format.date>
+                                    </f:if>
+                                </td>
+                                <td>
+                                    <f:if condition="{story.status} == 'submitted' || {story.status} == 'reviewing'">
+                                        <f:link.action action="approve" arguments="{story: story}" class="btn btn-success btn-sm">
+                                            Approve
+                                        </f:link.action>
+                                        <f:link.action action="reject" arguments="{story: story}" class="btn btn-danger btn-sm">
+                                            Reject
+                                        </f:link.action>
+                                    </f:if>
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </f:then>
+            <f:else>
+                <p>No stories found.</p>
+            </f:else>
+        </f:if>
+    </div>
+</f:section>
+</html>

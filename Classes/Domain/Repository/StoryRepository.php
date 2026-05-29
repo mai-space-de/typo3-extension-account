@@ -25,6 +25,16 @@ class StoryRepository extends Repository
         return $query->execute();
     }
 
+    public function findByStatus(string $status): QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->equals('status', $status),
+        );
+
+        return $query->execute();
+    }
+
     public function findByFeUser(int $feUserUid): QueryResultInterface
     {
         $query = $this->createQuery();
