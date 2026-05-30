@@ -5,6 +5,17 @@
     <div class="mai-account-login">
         <h2><f:translate key="account.login" extensionName="mai_account"/></h2>
         <f:flashMessages/>
+        <f:form.validationResults>
+            <f:if condition="{validationResults.flattenedErrors}">
+                <div class="mai-account-login__errors" role="alert">
+                    <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                        <f:for each="{errors}" as="error">
+                            <p class="mai-account-login__error">{error.message}</p>
+                        </f:for>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:form.validationResults>
         <f:form action="login" method="post">
             <div class="form-group">
                 <label for="username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>

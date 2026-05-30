@@ -5,6 +5,17 @@
     <div class="mai-account-newsletter">
         <h2><f:translate key="account.newsletter" extensionName="mai_account"/></h2>
         <f:flashMessages/>
+        <f:form.validationResults>
+            <f:if condition="{validationResults.flattenedErrors}">
+                <div class="mai-account-newsletter__errors" role="alert">
+                    <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                        <f:for each="{errors}" as="error">
+                            <p class="mai-account-newsletter__error">{error.message}</p>
+                        </f:for>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:form.validationResults>
         <f:form action="newsletterOptIn" method="post">
             <div class="form-group">
                 <f:form.checkbox

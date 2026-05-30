@@ -5,6 +5,17 @@
     <div class="mai-account-profile">
         <h2><f:translate key="account.profile" extensionName="mai_account"/></h2>
         <f:flashMessages/>
+        <f:form.validationResults>
+            <f:if condition="{validationResults.flattenedErrors}">
+                <div class="mai-account-profile__errors" role="alert">
+                    <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                        <f:for each="{errors}" as="error">
+                            <p class="mai-account-profile__error">{error.message}</p>
+                        </f:for>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:form.validationResults>
         <f:form action="profile" method="post">
             <div class="form-group">
                 <label for="firstName"><f:translate key="register.firstName" extensionName="mai_account" default="First Name"/></label>
@@ -41,6 +52,17 @@
         </f:if>
         <div class="mai-account-profile__password">
             <h3><f:translate key="profile.changePassword" extensionName="mai_account" default="Change Password"/></h3>
+            <f:form.validationResults>
+                <f:if condition="{validationResults.flattenedErrors}">
+                    <div class="mai-account-profile__errors" role="alert">
+                        <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                            <f:for each="{errors}" as="error">
+                                <p class="mai-account-profile__error">{error.message}</p>
+                            </f:for>
+                        </f:for>
+                    </div>
+                </f:if>
+            </f:form.validationResults>
             <f:form action="changePassword" method="post">
                 <div class="form-group">
                     <label for="currentPassword"><f:translate key="profile.currentPassword" extensionName="mai_account" default="Current Password"/></label>

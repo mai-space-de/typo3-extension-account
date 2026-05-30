@@ -6,6 +6,17 @@
         <h2><f:translate key="mfa.disable" extensionName="mai_account"/></h2>
         <f:flashMessages/>
         <p><f:translate key="mfa.disable.warning" extensionName="mai_account" default="Are you sure you want to disable two-factor authentication? This will make your account less secure."/></p>
+        <f:form.validationResults>
+            <f:if condition="{validationResults.flattenedErrors}">
+                <div class="mai-mfa-disable__errors" role="alert">
+                    <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                        <f:for each="{errors}" as="error">
+                            <p class="mai-mfa-disable__error">{error.message}</p>
+                        </f:for>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:form.validationResults>
         <f:form action="disable" controller="Mfa" method="post">
             <div class="form-group">
                 <label for="code"><f:translate key="mfa.code" extensionName="mai_account" default="Authentication Code"/></label>

@@ -5,6 +5,17 @@
     <div class="mai-mfa-verify">
         <h2><f:translate key="mfa.verify" extensionName="mai_account"/></h2>
         <f:flashMessages/>
+        <f:form.validationResults>
+            <f:if condition="{validationResults.flattenedErrors}">
+                <div class="mai-mfa-verify__errors" role="alert">
+                    <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                        <f:for each="{errors}" as="error">
+                            <p class="mai-mfa-verify__error">{error.message}</p>
+                        </f:for>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:form.validationResults>
         <f:form action="verify" controller="Mfa" method="post">
             <div class="form-group">
                 <label for="code"><f:translate key="mfa.code" extensionName="mai_account" default="Authentication Code"/></label>

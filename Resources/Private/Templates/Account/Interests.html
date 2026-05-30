@@ -5,6 +5,17 @@
     <div class="mai-account-interests">
         <h2><f:translate key="account.interests" extensionName="mai_account"/></h2>
         <f:flashMessages/>
+        <f:form.validationResults>
+            <f:if condition="{validationResults.flattenedErrors}">
+                <div class="mai-account-interests__errors" role="alert">
+                    <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                        <f:for each="{errors}" as="error">
+                            <p class="mai-account-interests__error">{error.message}</p>
+                        </f:for>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:form.validationResults>
         <f:form action="interests" method="post">
             <div class="mai-account-interests__list">
                 <f:for each="{allInterests}" as="interest">
