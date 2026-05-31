@@ -6,6 +6,18 @@
             <trans-unit id="account.login">
                 <source>Login</source>
             </trans-unit>
+            <trans-unit id="login.error">
+                <source>Login failed. Please check your username and password.</source>
+            </trans-unit>
+            <trans-unit id="login.logged_in">
+                <source>You are logged in.</source>
+            </trans-unit>
+            <trans-unit id="login.username">
+                <source>Username</source>
+            </trans-unit>
+            <trans-unit id="login.password">
+                <source>Password</source>
+            </trans-unit>
             <trans-unit id="account.logout">
                 <source>Logout</source>
             </trans-unit>

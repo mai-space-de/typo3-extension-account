@@ -11,11 +11,13 @@ use Maispace\MaiAccount\Domain\Repository\InterestRepository;
 use Maispace\MaiAccount\Domain\Repository\ReminderRepository;
 use Maispace\MaiAccount\Service\AccountMailer;
 use Maispace\MaiAccount\Service\RegistrationService;
+use Maispace\MaiAccount\Support\LoginFormSupport;
 use Maispace\MaiBase\Controller\AbstractActionController;
 use Maispace\MaiBase\Controller\Traits\FlashMessageTrait;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
+use TYPO3\CMS\Core\Security\RequestToken;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -42,6 +44,29 @@ class AccountController extends AbstractActionController
 
     public function loginAction(): ResponseInterface
     {
+        $parsedBody = $this->request->getParsedBody() ?? [];
+        $queryParams = $this->request->getQueryParams();
+        $loginType = LoginFormSupport::resolveLoginType($parsedBody, $queryParams);
+        $isLoggedIn = $this->context->getAspect('frontend.user')->isLoggedIn();
+
+        if (LoginFormSupport::isFreshLoginSuccess($loginType, $isLoggedIn)) {
+            $redirectPid = (int) ($this->settings['loginRedirectPid'] ?? 0);
+            if ($redirectPid > 0) {
+                return $this->redirect(null, null, null, [], $redirectPid);
+            }
+        }
+
+        if ($isLoggedIn) {
+            $this->view->assign('isLoggedIn', true);
+
+            return $this->htmlResponse();
+        }
+
+        $this->view->assignMultiple([
+            'loginError' => LoginFormSupport::hasLoginFailed($loginType, $isLoggedIn),
+            'requestToken' => $this->createLoginRequestToken(),
+        ]);
+
         return $this->htmlResponse();
     }
 
@@ -424,5 +449,21 @@ class AccountController extends AbstractActionController
         }
 
         return $this->htmlResponse();
+    }
+
+    private function createLoginRequestToken(): RequestToken
+    {
+        $storagePid = (int) (
+            $this->settings['registerStoragePid']
+            ?? $this->settings['persistence']['storagePid']
+            ?? 0
+        );
+
+        $token = RequestToken::create('core/user-auth/fe');
+        if ($storagePid > 0) {
+            $token = $token->withMergedParams(['pid' => (string) $storagePid]);
+        }
+
+        return $token;
     }
 }
