@@ -7,7 +7,7 @@
         <f:flashMessages/>
         <f:form.validationResults>
             <f:if condition="{validationResults.flattenedErrors}">
-                <div class="mai-account-login__errors" role="alert">
+                <div class="mai-account-login__errors" role="alert" data-testid="login-error">
                     <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
                         <f:for each="{errors}" as="error">
                             <p class="mai-account-login__error">{error.message}</p>
@@ -16,7 +16,7 @@
                 </div>
             </f:if>
         </f:form.validationResults>
-        <f:form action="login" method="post">
+        <f:form action="login" method="post" data-testid="login-form">
             <div class="form-group">
                 <label for="username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>
                 <f:form.textfield id="username" name="username" class="form-control" required="true" autocomplete="username"/>

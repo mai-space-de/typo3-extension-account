@@ -81,11 +81,11 @@
                 </div>
             </f:form>
         </div>
-        <nav class="mai-account-profile__nav">
+        <nav class="mai-account-profile__nav" data-testid="account-menu">
             <f:link.action action="interests"><f:translate key="account.interests" extensionName="mai_account"/></f:link.action>
             <f:link.action action="reminders"><f:translate key="account.reminders" extensionName="mai_account"/></f:link.action>
             <f:link.action action="newsletterOptIn"><f:translate key="account.newsletter" extensionName="mai_account"/></f:link.action>
-            <f:link.action action="logout"><f:translate key="account.logout" extensionName="mai_account"/></f:link.action>
+            <f:link.action action="logout" data-testid="logout"><f:translate key="account.logout" extensionName="mai_account"/></f:link.action>
         </nav>
     </div>
 </f:section>
