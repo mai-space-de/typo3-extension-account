@@ -46,11 +46,13 @@
                     </div>
                     <f:form.hidden name="logintype" value="login"/>
                     <div class="form-actions">
-                        <f:form.submit value="{f:translate(key: 'account.login', extensionName: 'mai_account')}" class="btn btn-primary"/>
+                        <button type="submit" class="btn btn-primary">
+                            <f:translate key="account.login" extensionName="mai_account" default="Login"/>
+                        </button>
                     </div>
                 </f:form>
                 <div class="mai-account-login__links">
-                    <f:link.action action="register"><f:translate key="account.register" extensionName="mai_account"/></f:link.action>
+                    <f:link.action action="register"><f:translate key="account.register" extensionName="mai_account" default="Register"/></f:link.action>
                 </div>
             </f:else>
         </f:if>
