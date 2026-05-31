@@ -1,6 +1,17 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
 <body>
+    <f:form.validationResults>
+        <f:if condition="{validationResults.flattenedErrors}">
+            <div class="mai-email-reminder__errors" role="alert">
+                <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                    <f:for each="{errors}" as="error">
+                        <p class="mai-email-reminder__error">{error.message}</p>
+                    </f:for>
+                </f:for>
+            </div>
+        </f:if>
+    </f:form.validationResults>
     <p>
         <f:if condition="{firstName}">
             <f:then><f:translate key="email.reminder.greetingNamed" extensionName="mai_account" arguments="{0: firstName}" default="Hello {firstName},"/></f:then>

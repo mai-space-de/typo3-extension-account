@@ -4,6 +4,18 @@
 <f:section name="main">
     <div class="mai-story-list">
         <h2><f:translate key="story.list" extensionName="mai_account"/></h2>
+        <f:flashMessages/>
+        <f:form.validationResults>
+            <f:if condition="{validationResults.flattenedErrors}">
+                <div class="mai-story-list__errors" role="alert">
+                    <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                        <f:for each="{errors}" as="error">
+                            <p class="mai-story-list__error">{error.message}</p>
+                        </f:for>
+                    </f:for>
+                </div>
+            </f:if>
+        </f:form.validationResults>
         <f:if condition="{stories}">
             <f:then>
                 <div class="mai-story-list__items">
