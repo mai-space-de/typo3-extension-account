@@ -16,21 +16,21 @@
                 </div>
             </f:if>
         </f:form.validationResults>
-        <f:form action="profile" method="post">
-            <div class="form-group">
+        <f:form action="profile" method="post" class="form">
+            <div class="form-field">
                 <label for="firstName"><f:translate key="register.firstName" extensionName="mai_account" default="First Name"/></label>
-                <f:form.textfield id="firstName" name="firstName" value="{user.firstName}" class="form-control" autocomplete="given-name"/>
+                <f:form.textfield id="firstName" name="firstName" value="{user.firstName}" autocomplete="given-name"/>
             </div>
-            <div class="form-group">
+            <div class="form-field">
                 <label for="lastName"><f:translate key="register.lastName" extensionName="mai_account" default="Last Name"/></label>
-                <f:form.textfield id="lastName" name="lastName" value="{user.lastName}" class="form-control" autocomplete="family-name"/>
+                <f:form.textfield id="lastName" name="lastName" value="{user.lastName}" autocomplete="family-name"/>
             </div>
-            <div class="form-group">
+            <div class="form-field">
                 <label for="email"><f:translate key="register.email" extensionName="mai_account" default="E-Mail"/></label>
-                <f:form.textfield id="email" name="email" type="email" value="{user.email}" class="form-control" autocomplete="email"/>
+                <f:form.textfield id="email" name="email" type="email" value="{user.email}" autocomplete="email"/>
             </div>
             <div class="form-actions">
-                <f:form.submit value="{f:translate(key: 'profile.save', extensionName: 'mai_account', default: 'Save')}" class="btn btn-primary"/>
+                <f:form.submit value="{f:translate(key: 'profile.save', extensionName: 'mai_account', default: 'Save')}" class="button"/>
             </div>
         </f:form>
         <f:if condition="{memberAvailable}">
@@ -63,21 +63,21 @@
                     </div>
                 </f:if>
             </f:form.validationResults>
-            <f:form action="changePassword" method="post">
-                <div class="form-group">
+            <f:form action="changePassword" method="post" class="form">
+                <div class="form-field">
                     <label for="currentPassword"><f:translate key="profile.currentPassword" extensionName="mai_account" default="Current Password"/></label>
-                    <f:form.password id="currentPassword" name="currentPassword" class="form-control" required="true" autocomplete="current-password"/>
+                    <f:form.password id="currentPassword" name="currentPassword" required="true" autocomplete="current-password"/>
                 </div>
-                <div class="form-group">
+                <div class="form-field">
                     <label for="newPassword"><f:translate key="profile.newPassword" extensionName="mai_account" default="New Password"/></label>
-                    <f:form.password id="newPassword" name="newPassword" class="form-control" required="true" autocomplete="new-password"/>
+                    <f:form.password id="newPassword" name="newPassword" required="true" autocomplete="new-password"/>
                 </div>
-                <div class="form-group">
+                <div class="form-field">
                     <label for="newPasswordConfirm"><f:translate key="profile.newPasswordConfirm" extensionName="mai_account" default="Confirm New Password"/></label>
-                    <f:form.password id="newPasswordConfirm" name="newPasswordConfirm" class="form-control" required="true" autocomplete="new-password"/>
+                    <f:form.password id="newPasswordConfirm" name="newPasswordConfirm" required="true" autocomplete="new-password"/>
                 </div>
                 <div class="form-actions">
-                    <f:form.submit value="{f:translate(key: 'profile.changePassword', extensionName: 'mai_account', default: 'Change Password')}" class="btn btn-primary"/>
+                    <f:form.submit value="{f:translate(key: 'profile.changePassword', extensionName: 'mai_account', default: 'Change Password')}" class="button"/>
                 </div>
             </f:form>
         </div>

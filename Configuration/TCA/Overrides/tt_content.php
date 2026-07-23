@@ -21,6 +21,14 @@ ExtensionUtility::registerPlugin(
 
 ExtensionUtility::registerPlugin(
     'MaiAccount',
+    'Register',
+    $lang('plugin.register.title'),
+    'mai-content',
+    'maispace_feature',
+);
+
+ExtensionUtility::registerPlugin(
+    'MaiAccount',
     'Mfa',
     $lang('plugin.mfa.title'),
     'mai-content',
@@ -36,6 +44,14 @@ ExtensionUtility::registerPlugin(
 );
 
 (new CType('maispace_account_account', $lang('ctype.account'), 'mai-content'))
+    ->addDefaultHeaderPalette()
+    ->addCustomFields('pi_flexform')
+    ->addDefaultLanguageTab()
+    ->addDefaultAccessTab()
+    ->setGroup('maispace_feature')
+    ->register();
+
+(new CType('maispace_account_register', $lang('ctype.register'), 'mai-content'))
     ->addDefaultHeaderPalette()
     ->addCustomFields('pi_flexform')
     ->addDefaultLanguageTab()
@@ -62,6 +78,24 @@ ExtensionManagementUtility::addPiFlexFormValue(
     '*',
     'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
     'maispace_account_account',
+);
+
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
+    'maiaccount_account',
+);
+
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
+    'maispace_account_register',
+);
+
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
+    'maiaccount_register',
 );
 
 ExtensionManagementUtility::addPiFlexFormValue(

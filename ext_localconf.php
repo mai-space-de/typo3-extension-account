@@ -24,6 +24,18 @@ ExtensionUtility::configurePlugin(
 
 ExtensionUtility::configurePlugin(
     'MaiAccount',
+    'Register',
+    [
+        AccountController::class => 'register,confirm,login',
+    ],
+    [
+        AccountController::class => 'register,confirm,login',
+    ],
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
+);
+
+ExtensionUtility::configurePlugin(
+    'MaiAccount',
     'Mfa',
     [
         MfaController::class => 'setup,verify,disable',

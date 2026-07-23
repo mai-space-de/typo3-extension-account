@@ -2,60 +2,83 @@
       data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 <f:section name="main">
-    <div class="mai-account-login">
-        <h2><f:translate key="account.login" extensionName="mai_account"/></h2>
-        <f:flashMessages/>
-        <f:if condition="{isLoggedIn}">
-            <f:then>
-                <p class="mai-account-login__greeting" data-testid="user-greeting">
-                    <f:translate key="login.logged_in" extensionName="mai_account"/>
-                </p>
-                <p class="mai-account-login__actions">
-                    <f:link.action action="profile"><f:translate key="account.profile" extensionName="mai_account"/></f:link.action>
-                    |
-                    <f:link.action action="logout" data-testid="logout"><f:translate key="account.logout" extensionName="mai_account"/></f:link.action>
-                </p>
-            </f:then>
-            <f:else>
-                <f:form.validationResults>
-                    <f:if condition="{validationResults.flattenedErrors}">
-                        <div class="mai-account-login__errors" role="alert" data-testid="login-error">
-                            <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
-                                <f:for each="{errors}" as="error">
-                                    <p class="mai-account-login__error">{error.message}</p>
+    <div class="mai-account-login" data-testid="login-panel">
+        <div class="mai-account-login__card">
+            <f:flashMessages/>
+            <f:if condition="{isLoggedIn}">
+                <f:then>
+                    <p class="mai-account-login__greeting" data-testid="user-greeting">
+                        <f:translate key="login.logged_in" extensionName="mai_account"/>
+                    </p>
+                    <p class="mai-account-login__actions">
+                        <f:link.action action="profile" class="button button-block">
+                            <f:translate key="account.profile" extensionName="mai_account"/>
+                        </f:link.action>
+                        <f:link.action action="logout" class="button button-outline button-block" additionalAttributes="{data-testid: 'logout'}">
+                            <f:translate key="account.logout" extensionName="mai_account"/>
+                        </f:link.action>
+                    </p>
+                </f:then>
+                <f:else>
+                    <p class="mai-account-login__lead">
+                        <f:translate key="login.intro" extensionName="mai_account" default="Sign in to manage your account and take part in community life."/>
+                    </p>
+                    <f:form.validationResults>
+                        <f:if condition="{validationResults.flattenedErrors}">
+                            <div class="mai-account-login__errors" role="alert" data-testid="login-error">
+                                <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyName">
+                                    <f:for each="{errors}" as="error">
+                                        <p class="mai-account-login__error">{error.message}</p>
+                                    </f:for>
                                 </f:for>
-                            </f:for>
+                            </div>
+                        </f:if>
+                    </f:form.validationResults>
+                    <f:if condition="{loginError}">
+                        <div class="mai-account-login__errors" role="alert" data-testid="login-error">
+                            <p class="mai-account-login__error">
+                                <f:translate key="login.error" extensionName="mai_account"/>
+                            </p>
                         </div>
                     </f:if>
-                </f:form.validationResults>
-                <f:if condition="{loginError}">
-                    <div class="mai-account-login__errors" role="alert" data-testid="login-error">
-                        <p class="mai-account-login__error">
-                            <f:translate key="login.error" extensionName="mai_account"/>
+                    <f:form action="login" fieldNamePrefix="" method="post" requestToken="{requestToken}" data-testid="login-form" spellcheck="false" class="form mai-account-login__form">
+                        <div class="form-field">
+                            <label for="tx-maiaccount-login-username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>
+                            <f:form.textfield id="tx-maiaccount-login-username" name="user" required="true" autocomplete="username"/>
+                        </div>
+                        <div class="form-field">
+                            <label for="tx-maiaccount-login-password"><f:translate key="login.password" extensionName="mai_account" default="Password"/></label>
+                            <f:form.password id="tx-maiaccount-login-password" name="pass" required="true" autocomplete="current-password"/>
+                        </div>
+                        <f:form.hidden name="logintype" value="login"/>
+                        <div class="form-actions">
+                            <button type="submit" class="button button-block">
+                                <f:translate key="account.login" extensionName="mai_account" default="Login"/>
+                            </button>
+                        </div>
+                    </f:form>
+                    <div class="mai-account-login__links">
+                        <p class="mai-account-login__register">
+                            <span class="mai-account-login__register-label">
+                                <f:translate key="login.register.prompt" extensionName="mai_account" default="No account yet?"/>
+                            </span>
+                            <f:if condition="{settings.registerPid}">
+                                <f:then>
+                                    <f:link.page pageUid="{settings.registerPid}" class="mai-account-login__register-link">
+                                        <f:translate key="account.register" extensionName="mai_account" default="Register"/>
+                                    </f:link.page>
+                                </f:then>
+                                <f:else>
+                                    <f:link.action action="register" class="mai-account-login__register-link">
+                                        <f:translate key="account.register" extensionName="mai_account" default="Register"/>
+                                    </f:link.action>
+                                </f:else>
+                            </f:if>
                         </p>
                     </div>
-                </f:if>
-                <f:form action="login" fieldNamePrefix="" method="post" requestToken="{requestToken}" data-testid="login-form" spellcheck="false">
-                    <div class="form-group">
-                        <label for="tx-maiaccount-login-username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>
-                        <f:form.textfield id="tx-maiaccount-login-username" name="user" class="form-control" required="true" autocomplete="username"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="tx-maiaccount-login-password"><f:translate key="login.password" extensionName="mai_account" default="Password"/></label>
-                        <f:form.password id="tx-maiaccount-login-password" name="pass" class="form-control" required="true" autocomplete="current-password"/>
-                    </div>
-                    <f:form.hidden name="logintype" value="login"/>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">
-                            <f:translate key="account.login" extensionName="mai_account" default="Login"/>
-                        </button>
-                    </div>
-                </f:form>
-                <div class="mai-account-login__links">
-                    <f:link.action action="register"><f:translate key="account.register" extensionName="mai_account" default="Register"/></f:link.action>
-                </div>
-            </f:else>
-        </f:if>
+                </f:else>
+            </f:if>
+        </div>
     </div>
 </f:section>
 </html>

@@ -26,14 +26,14 @@
                 </div>
             </f:if>
         </f:form.validationResults>
-        <f:form action="verify" controller="Mfa" method="post">
+        <f:form action="verify" controller="Mfa" method="post" class="form">
             <f:form.hidden name="secret" value="{secret}"/>
-            <div class="form-group">
+            <div class="form-field">
                 <label for="code"><f:translate key="mfa.code" extensionName="mai_account" default="Authentication Code"/></label>
-                <f:form.textfield id="code" name="code" class="form-control" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
+                <f:form.textfield id="code" name="code" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
             </div>
             <div class="form-actions">
-                <f:form.submit value="{f:translate(key: 'mfa.setup.confirm', extensionName: 'mai_account', default: 'Confirm & Enable')}" class="btn btn-primary"/>
+                <f:form.submit value="{f:translate(key: 'mfa.setup.confirm', extensionName: 'mai_account', default: 'Confirm & Enable')}" class="button"/>
             </div>
         </f:form>
     </div>

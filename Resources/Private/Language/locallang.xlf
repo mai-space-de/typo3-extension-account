@@ -12,6 +12,12 @@
             <trans-unit id="login.logged_in">
                 <source>You are logged in.</source>
             </trans-unit>
+            <trans-unit id="login.intro">
+                <source>Sign in to manage your account and take part in community life.</source>
+            </trans-unit>
+            <trans-unit id="login.register.prompt">
+                <source>No account yet?</source>
+            </trans-unit>
             <trans-unit id="login.username">
                 <source>Username</source>
             </trans-unit>
@@ -44,6 +50,15 @@
             </trans-unit>
             <trans-unit id="mfa.disable">
                 <source>Disable Two-Factor Authentication</source>
+            </trans-unit>
+            <trans-unit id="mfa.code">
+                <source>Authentication Code</source>
+            </trans-unit>
+            <trans-unit id="mfa.setup.instructions">
+                <source>Scan the QR code with your authenticator app, then enter the 6-digit code to confirm.</source>
+            </trans-unit>
+            <trans-unit id="mfa.setup.manualSecret">
+                <source>Or enter this secret manually:</source>
             </trans-unit>
             <trans-unit id="story.list">
                 <source>Stories</source>

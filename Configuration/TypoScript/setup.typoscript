@@ -22,12 +22,15 @@ plugin {
             logoutRedirectPid = {$plugin.tx_maiaccount_account.settings.logoutRedirectPid}
             registerConfirmPid = {$plugin.tx_maiaccount_account.settings.registerConfirmPid}
             registerStoragePid = {$plugin.tx_maiaccount_account.settings.registerStoragePid}
+            loginPid = {$plugin.tx_maiaccount_account.settings.loginPid}
+            registerPid = {$plugin.tx_maiaccount_account.settings.registerPid}
             newsletterSubscriberStoragePid = {$plugin.tx_maiaccount_account.settings.newsletterSubscriberStoragePid}
             newsletterConfirmPid = {$plugin.tx_maiaccount_account.settings.newsletterConfirmPid}
             mfaVerifyPid = {$plugin.tx_maiaccount_account.settings.mfaVerifyPid}
             mfaExemptPids = {$plugin.tx_maiaccount_account.settings.mfaExemptPids}
         }
     }
+    tx_maiaccount_register < plugin.tx_maiaccount_account
     tx_maiaccount_mfa {
         view {
             templateRootPaths {

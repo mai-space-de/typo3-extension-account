@@ -102,6 +102,9 @@
             <trans-unit id="ctype.account">
                 <source>Account</source>
             </trans-unit>
+            <trans-unit id="ctype.register">
+                <source>Register</source>
+            </trans-unit>
             <trans-unit id="ctype.mfa">
                 <source>MFA Setup</source>
             </trans-unit>
@@ -110,6 +113,9 @@
             </trans-unit>
             <trans-unit id="plugin.account.title">
                 <source>Account: Login / Profile</source>
+            </trans-unit>
+            <trans-unit id="plugin.register.title">
+                <source>Account: Register</source>
             </trans-unit>
             <trans-unit id="plugin.mfa.title">
                 <source>Account: MFA Setup</source>

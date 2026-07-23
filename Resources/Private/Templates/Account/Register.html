@@ -16,33 +16,40 @@
                 </div>
             </f:if>
         </f:form.validationResults>
-        <f:form action="register" method="post">
-            <div class="form-group">
+        <f:form action="register" method="post" class="form">
+            <div class="form-field">
                 <label for="firstName"><f:translate key="register.firstName" extensionName="mai_account" default="First Name"/></label>
-                <f:form.textfield id="firstName" name="firstName" class="form-control" required="true" autocomplete="given-name"/>
+                <f:form.textfield id="firstName" name="firstName" required="true" autocomplete="given-name"/>
             </div>
-            <div class="form-group">
+            <div class="form-field">
                 <label for="lastName"><f:translate key="register.lastName" extensionName="mai_account" default="Last Name"/></label>
-                <f:form.textfield id="lastName" name="lastName" class="form-control" required="true" autocomplete="family-name"/>
+                <f:form.textfield id="lastName" name="lastName" required="true" autocomplete="family-name"/>
             </div>
-            <div class="form-group">
+            <div class="form-field">
                 <label for="username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>
-                <f:form.textfield id="username" name="username" class="form-control" required="true" autocomplete="username"/>
+                <f:form.textfield id="username" name="username" required="true" autocomplete="username"/>
             </div>
-            <div class="form-group">
+            <div class="form-field">
                 <label for="email"><f:translate key="register.email" extensionName="mai_account" default="E-Mail"/></label>
-                <f:form.textfield id="email" name="email" type="email" class="form-control" required="true" autocomplete="email"/>
+                <f:form.textfield id="email" name="email" type="email" required="true" autocomplete="email"/>
             </div>
-            <div class="form-group">
+            <div class="form-field">
                 <label for="password"><f:translate key="login.password" extensionName="mai_account" default="Password"/></label>
-                <f:form.password id="password" name="password" class="form-control" required="true" autocomplete="new-password"/>
+                <f:form.password id="password" name="password" required="true" autocomplete="new-password"/>
             </div>
             <div class="form-actions">
-                <f:form.submit value="{f:translate(key: 'account.register', extensionName: 'mai_account')}" class="btn btn-primary"/>
+                <f:form.submit value="{f:translate(key: 'account.register', extensionName: 'mai_account')}" class="button"/>
             </div>
         </f:form>
         <div class="mai-account-register__links">
-            <f:link.action action="login"><f:translate key="account.login" extensionName="mai_account"/></f:link.action>
+            <f:if condition="{settings.loginPid}">
+                <f:then>
+                    <f:link.page pageUid="{settings.loginPid}"><f:translate key="account.login" extensionName="mai_account"/></f:link.page>
+                </f:then>
+                <f:else>
+                    <f:link.action action="login"><f:translate key="account.login" extensionName="mai_account"/></f:link.action>
+                </f:else>
+            </f:if>
         </div>
     </div>
 </f:section>

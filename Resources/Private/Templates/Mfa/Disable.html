@@ -17,14 +17,14 @@
                 </div>
             </f:if>
         </f:form.validationResults>
-        <f:form action="disable" controller="Mfa" method="post">
-            <div class="form-group">
+        <f:form action="disable" controller="Mfa" method="post" class="form">
+            <div class="form-field">
                 <label for="code"><f:translate key="mfa.code" extensionName="mai_account" default="Authentication Code"/></label>
-                <f:form.textfield id="code" name="code" class="form-control" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
+                <f:form.textfield id="code" name="code" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
             </div>
             <div class="form-actions">
-                <f:form.submit value="{f:translate(key: 'mfa.disable', extensionName: 'mai_account')}" class="btn btn-danger"/>
-                <f:link.action action="profile" controller="Account" class="btn btn-secondary"><f:translate key="action.cancel" extensionName="mai_account" default="Cancel"/></f:link.action>
+                <f:form.submit value="{f:translate(key: 'mfa.disable', extensionName: 'mai_account')}" class="button"/>
+                <f:link.action action="profile" controller="Account" class="button button-outline"><f:translate key="action.cancel" extensionName="mai_account" default="Cancel"/></f:link.action>
             </div>
         </f:form>
     </div>

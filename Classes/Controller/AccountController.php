@@ -72,7 +72,7 @@ class AccountController extends AbstractActionController
 
     public function logoutAction(): ResponseInterface
     {
-        $feUser = $GLOBALS['TSFE']->fe_user ?? null;
+        $feUser = $this->request->getAttribute('frontend.user');
 
         if ($feUser instanceof FrontendUserAuthentication) {
             $feUser->logoff();

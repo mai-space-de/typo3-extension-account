@@ -43,6 +43,18 @@
                 <source>Disable Two-Factor Authentication</source>
                 <target>Zwei-Faktor-Authentifizierung deaktivieren</target>
             </trans-unit>
+            <trans-unit id="mfa.code">
+                <source>Authentication Code</source>
+                <target>Authentifizierungscode</target>
+            </trans-unit>
+            <trans-unit id="mfa.setup.instructions">
+                <source>Scan the QR code with your authenticator app, then enter the 6-digit code to confirm.</source>
+                <target>Scanne den QR-Code mit deiner Authenticator-App und gib anschließend den 6-stelligen Code zur Bestätigung ein.</target>
+            </trans-unit>
+            <trans-unit id="mfa.setup.manualSecret">
+                <source>Or enter this secret manually:</source>
+                <target>Oder gib diesen Code manuell ein:</target>
+            </trans-unit>
             <trans-unit id="story.list">
                 <source>Stories</source>
                 <target>Geschichten</target>
@@ -82,6 +94,122 @@
             <trans-unit id="flash.mfaInvalidCode">
                 <source>The authentication code is invalid. Please try again.</source>
                 <target>Der Authentifizierungscode ist ungültig. Bitte versuche es erneut.</target>
+            </trans-unit>
+            <trans-unit id="login.username">
+                <source>Username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="login.password">
+                <source>Password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="login.error">
+                <source>Login failed. Please check your username and password.</source>
+                <target>Anmeldung fehlgeschlagen. Bitte überprüfe Benutzername und Passwort.</target>
+            </trans-unit>
+            <trans-unit id="login.logged_in">
+                <source>You are logged in.</source>
+                <target>Du bist angemeldet.</target>
+            </trans-unit>
+            <trans-unit id="login.intro">
+                <source>Sign in to manage your account and take part in community life.</source>
+                <target>Melden Sie sich an, um Ihr Konto zu verwalten und am Vereinsleben teilzunehmen.</target>
+            </trans-unit>
+            <trans-unit id="login.register.prompt">
+                <source>No account yet?</source>
+                <target>Noch kein Konto?</target>
+            </trans-unit>
+            <trans-unit id="profile.changePassword">
+                <source>Change Password</source>
+                <target>Passwort ändern</target>
+            </trans-unit>
+            <trans-unit id="profile.currentPassword">
+                <source>Current Password</source>
+                <target>Aktuelles Passwort</target>
+            </trans-unit>
+            <trans-unit id="profile.newPassword">
+                <source>New Password</source>
+                <target>Neues Passwort</target>
+            </trans-unit>
+            <trans-unit id="profile.newPasswordConfirm">
+                <source>Confirm New Password</source>
+                <target>Neues Passwort bestätigen</target>
+            </trans-unit>
+            <trans-unit id="profile.memberCard">
+                <source>Your Membership</source>
+                <target>Deine Mitgliedschaft</target>
+            </trans-unit>
+            <trans-unit id="profile.memberSince">
+                <source>Member Since</source>
+                <target>Mitglied seit</target>
+            </trans-unit>
+            <trans-unit id="confirm.success.title">
+                <source>Account activated</source>
+                <target>Konto aktiviert</target>
+            </trans-unit>
+            <trans-unit id="confirm.success.message">
+                <source>Your account is now active. You can log in.</source>
+                <target>Dein Konto ist jetzt aktiv. Du kannst dich anmelden.</target>
+            </trans-unit>
+            <trans-unit id="confirm.fail.title">
+                <source>Confirmation failed</source>
+                <target>Bestätigung fehlgeschlagen</target>
+            </trans-unit>
+            <trans-unit id="confirm.fail.message">
+                <source>The confirmation link is invalid or has expired.</source>
+                <target>Der Bestätigungslink ist ungültig oder abgelaufen.</target>
+            </trans-unit>
+            <trans-unit id="email.confirm.subject">
+                <source>Please confirm your account</source>
+                <target>Bitte bestätige dein Konto</target>
+            </trans-unit>
+            <trans-unit id="email.confirm.greeting">
+                <source>Hello,</source>
+                <target>Hallo,</target>
+            </trans-unit>
+            <trans-unit id="email.confirm.greetingNamed">
+                <source>Hello %s,</source>
+                <target>Hallo %s,</target>
+            </trans-unit>
+            <trans-unit id="email.confirm.body">
+                <source>Please confirm your account by clicking the link below:</source>
+                <target>Bitte bestätige dein Konto über den folgenden Link:</target>
+            </trans-unit>
+            <trans-unit id="email.confirm.disclaimer">
+                <source>If you did not create this account you can ignore this email.</source>
+                <target>Wenn du dieses Konto nicht erstellt hast, kannst du diese E-Mail ignorieren.</target>
+            </trans-unit>
+            <trans-unit id="email.reminder.subject">
+                <source>Reminder</source>
+                <target>Erinnerung</target>
+            </trans-unit>
+            <trans-unit id="email.reminder.greeting">
+                <source>Hello,</source>
+                <target>Hallo,</target>
+            </trans-unit>
+            <trans-unit id="email.reminder.greetingNamed">
+                <source>Hello %s,</source>
+                <target>Hallo %s,</target>
+            </trans-unit>
+            <trans-unit id="email.reminder.body">
+                <source>This is your reminder:</source>
+                <target>Das ist deine Erinnerung:</target>
+            </trans-unit>
+            <trans-unit id="email.reminder.when">
+                <source>Scheduled for:</source>
+                <target>Geplant für:</target>
+            </trans-unit>
+            <trans-unit id="email.storyPublished.subject">
+                <source>Your story has been published</source>
+                <target>Deine Geschichte wurde veröffentlicht</target>
+            </trans-unit>
+            <trans-unit id="email.storyPublished.greetingNamed">
+                <source>Hello %s,</source>
+                <target>Hallo %s,</target>
+            </trans-unit>
+            <trans-unit id="email.storyPublished.body">
+                <source>Your story has been published and is now visible on our website.</source>
+                <target>Deine Geschichte wurde veröffentlicht und ist jetzt auf unserer Website sichtbar.</target>
             </trans-unit>
         </body>
     </file>

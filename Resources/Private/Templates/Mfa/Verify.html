@@ -16,13 +16,13 @@
                 </div>
             </f:if>
         </f:form.validationResults>
-        <f:form action="verify" controller="Mfa" method="post">
-            <div class="form-group">
+        <f:form action="verify" controller="Mfa" method="post" class="form">
+            <div class="form-field">
                 <label for="code"><f:translate key="mfa.code" extensionName="mai_account" default="Authentication Code"/></label>
-                <f:form.textfield id="code" name="code" class="form-control" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
+                <f:form.textfield id="code" name="code" required="true" autocomplete="one-time-code" inputmode="numeric" maxlength="6"/>
             </div>
             <div class="form-actions">
-                <f:form.submit value="{f:translate(key: 'mfa.verify', extensionName: 'mai_account')}" class="btn btn-primary"/>
+                <f:form.submit value="{f:translate(key: 'mfa.verify', extensionName: 'mai_account')}" class="button"/>
             </div>
         </f:form>
     </div>

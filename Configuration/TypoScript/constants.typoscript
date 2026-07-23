@@ -20,6 +20,8 @@ plugin {
             logoutRedirectPid =
             registerConfirmPid =
             registerStoragePid =
+            loginPid =
+            registerPid =
             newsletterSubscriberStoragePid =
             newsletterConfirmPid =
             mfaVerifyPid =
