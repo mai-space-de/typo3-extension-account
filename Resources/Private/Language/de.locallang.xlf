@@ -15,6 +15,18 @@
                 <source>Register</source>
                 <target>Registrieren</target>
             </trans-unit>
+            <trans-unit id="register.firstName">
+                <source>First Name</source>
+                <target>Vorname</target>
+            </trans-unit>
+            <trans-unit id="register.lastName">
+                <source>Last Name</source>
+                <target>Nachname</target>
+            </trans-unit>
+            <trans-unit id="register.email">
+                <source>E-Mail</source>
+                <target>E-Mail</target>
+            </trans-unit>
             <trans-unit id="account.profile">
                 <source>My Profile</source>
                 <target>Mein Profil</target>

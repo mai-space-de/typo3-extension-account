@@ -30,6 +30,15 @@
             <trans-unit id="account.register">
                 <source>Register</source>
             </trans-unit>
+            <trans-unit id="register.firstName">
+                <source>First Name</source>
+            </trans-unit>
+            <trans-unit id="register.lastName">
+                <source>Last Name</source>
+            </trans-unit>
+            <trans-unit id="register.email">
+                <source>E-Mail</source>
+            </trans-unit>
             <trans-unit id="account.profile">
                 <source>My Profile</source>
             </trans-unit>
