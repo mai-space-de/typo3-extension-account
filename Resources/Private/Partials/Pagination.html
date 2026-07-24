@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{pagination.allPageNumbers -> f:count() > 1}">
+    <nav class="mai-story-pagination" aria-label="{f:translate(key: 'pagination.label', extensionName: 'mai_account')}">
+        <ul class="mai-story-pagination__list" role="list">
+            <f:if condition="{pagination.previousPageNumber}">
+                <li class="mai-story-pagination__item mai-story-pagination__item--prev">
+                    <f:link.action action="list"
+                                   arguments="{currentPage: pagination.previousPageNumber}"
+                                   class="mai-story-pagination__link"
+                                   rel="prev">
+                        <f:translate key="pagination.prev" extensionName="mai_account" />
+                    </f:link.action>
+                </li>
+            </f:if>
+
+            <f:for each="{pagination.allPageNumbers}" as="pageNumber">
+                <li class="mai-story-pagination__item{f:if(condition: pageNumber == pagination.currentPageNumber, then: ' mai-story-pagination__item--current')}">
+                    <f:link.action action="list"
+                                   arguments="{currentPage: pageNumber}"
+                                   class="mai-story-pagination__link"
+                                   aria-current="{f:if(condition: pageNumber == pagination.currentPageNumber, then: 'page')}">
+                        {pageNumber}
+                    </f:link.action>
+                </li>
+            </f:for>
+
+            <f:if condition="{pagination.nextPageNumber}">
+                <li class="mai-story-pagination__item mai-story-pagination__item--next">
+                    <f:link.action action="list"
+                                   arguments="{currentPage: pagination.nextPageNumber}"
+                                   class="mai-story-pagination__link"
+                                   rel="next">
+                        <f:translate key="pagination.next" extensionName="mai_account" />
+                    </f:link.action>
+                </li>
+            </f:if>
+        </ul>
+    </nav>
+</f:if>
+</html>

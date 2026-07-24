@@ -78,6 +78,15 @@
             <trans-unit id="story.noStories">
                 <source>No stories yet.</source>
             </trans-unit>
+            <trans-unit id="pagination.label">
+                <source>Page navigation</source>
+            </trans-unit>
+            <trans-unit id="pagination.prev">
+                <source>Previous</source>
+            </trans-unit>
+            <trans-unit id="pagination.next">
+                <source>Next</source>
+            </trans-unit>
             <trans-unit id="flash.profileSaved">
                 <source>Your profile has been saved.</source>
             </trans-unit>

@@ -3,19 +3,15 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.sheet.general</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.sheet.general</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.itemsPerPage>
-                        <TCEforms>
-                            <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.itemsPerPage</label>
-                            <config>
-                                <type>number</type>
-                                <default>10</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.itemsPerPage</label>
+                        <config>
+                            <type>number</type>
+                            <default>10</default>
+                        </config>
                     </settings.itemsPerPage>
                 </el>
             </ROOT>

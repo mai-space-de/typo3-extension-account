@@ -16,10 +16,10 @@
                 </div>
             </f:if>
         </f:form.validationResults>
-        <f:if condition="{stories}">
+        <f:if condition="{paginator.paginatedItems}">
             <f:then>
                 <div class="mai-story-list__items">
-                    <f:for each="{stories}" as="story">
+                    <f:for each="{paginator.paginatedItems}" as="story">
                         <article class="mai-story-list__item">
                             <h3 class="mai-story-list__title">
                                 <f:link.action action="detail" arguments="{story: story}">{story.title}</f:link.action>

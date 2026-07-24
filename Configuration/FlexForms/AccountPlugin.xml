@@ -3,46 +3,38 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.sheet.general</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.sheet.general</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.loginRedirectPid>
-                        <TCEforms>
-                            <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.loginRedirectPid</label>
-                            <config>
-                                <type>group</type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.loginRedirectPid</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                        </config>
                     </settings.loginRedirectPid>
                     <settings.logoutRedirectPid>
-                        <TCEforms>
-                            <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.logoutRedirectPid</label>
-                            <config>
-                                <type>group</type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.logoutRedirectPid</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                        </config>
                     </settings.logoutRedirectPid>
                     <settings.registerConfirmPid>
-                        <TCEforms>
-                            <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.registerConfirmPid</label>
-                            <config>
-                                <type>group</type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>0</minitems>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:mai_account/Resources/Private/Language/Default/locallang_tca.xlf:flexform.field.registerConfirmPid</label>
+                        <config>
+                            <type>group</type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                        </config>
                     </settings.registerConfirmPid>
                 </el>
             </ROOT>
