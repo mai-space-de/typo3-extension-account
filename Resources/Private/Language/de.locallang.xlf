@@ -79,6 +79,18 @@
                 <source>No stories yet.</source>
                 <target>Noch keine Geschichten vorhanden.</target>
             </trans-unit>
+            <trans-unit id="pagination.label">
+                <source>Page navigation</source>
+                <target>Seitennavigation</target>
+            </trans-unit>
+            <trans-unit id="pagination.prev">
+                <source>Previous</source>
+                <target>Zurück</target>
+            </trans-unit>
+            <trans-unit id="pagination.next">
+                <source>Next</source>
+                <target>Weiter</target>
+            </trans-unit>
             <trans-unit id="flash.profileSaved">
                 <source>Your profile has been saved.</source>
                 <target>Dein Profil wurde gespeichert.</target>
