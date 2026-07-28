@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 defined('TYPO3') or die();
 
-use Maispace\MaiBase\TableConfigurationArray\CType;
 use Maispace\MaiBase\TableConfigurationArray\Helper;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 $lang = Helper::localLangHelperFactory('mai_account', 'Default/locallang_tca.xlf');
@@ -16,7 +14,9 @@ ExtensionUtility::registerPlugin(
     'Account',
     $lang('plugin.account.title'),
     'mai-content',
-    'maispace_feature',
+    'maispace_plugins_interactive',
+    '',
+    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
 );
 
 ExtensionUtility::registerPlugin(
@@ -24,7 +24,9 @@ ExtensionUtility::registerPlugin(
     'Register',
     $lang('plugin.register.title'),
     'mai-content',
-    'maispace_feature',
+    'maispace_plugins_interactive',
+    '',
+    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
 );
 
 ExtensionUtility::registerPlugin(
@@ -32,7 +34,7 @@ ExtensionUtility::registerPlugin(
     'Mfa',
     $lang('plugin.mfa.title'),
     'mai-content',
-    'maispace_feature',
+    'maispace_plugins_interactive',
 );
 
 ExtensionUtility::registerPlugin(
@@ -40,66 +42,7 @@ ExtensionUtility::registerPlugin(
     'Stories',
     $lang('plugin.stories.title'),
     'mai-content',
-    'maispace_feature',
-);
-
-(new CType('maispace_account_account', $lang('ctype.account'), 'mai-content'))
-    ->addDefaultHeaderPalette()
-    ->addCustomFields('pi_flexform')
-    ->addDefaultLanguageTab()
-    ->addDefaultAccessTab()
-    ->setGroup('maispace_feature')
-    ->register();
-
-(new CType('maispace_account_register', $lang('ctype.register'), 'mai-content'))
-    ->addDefaultHeaderPalette()
-    ->addCustomFields('pi_flexform')
-    ->addDefaultLanguageTab()
-    ->addDefaultAccessTab()
-    ->setGroup('maispace_feature')
-    ->register();
-
-(new CType('maispace_account_mfa', $lang('ctype.mfa'), 'mai-content'))
-    ->addDefaultHeaderPalette()
-    ->addDefaultLanguageTab()
-    ->addDefaultAccessTab()
-    ->setGroup('maispace_feature')
-    ->register();
-
-(new CType('maispace_account_stories', $lang('ctype.stories'), 'mai-content'))
-    ->addDefaultHeaderPalette()
-    ->addCustomFields('pi_flexform')
-    ->addDefaultLanguageTab()
-    ->addDefaultAccessTab()
-    ->setGroup('maispace_feature')
-    ->register();
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
-    'maispace_account_account',
-);
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
-    'maiaccount_account',
-);
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
-    'maispace_account_register',
-);
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:mai_account/Configuration/FlexForms/AccountPlugin.xml',
-    'maiaccount_register',
-);
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
+    'maispace_plugins_interactive',
+    '',
     'FILE:EXT:mai_account/Configuration/FlexForms/StoryPlugin.xml',
-    'maispace_account_stories',
 );
