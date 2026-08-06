@@ -177,6 +177,12 @@
             <trans-unit id="profile.memberSince">
                 <source>Member Since</source>
             </trans-unit>
+            <trans-unit id="task.reminder.title">
+                <source>Account Reminder Task</source>
+            </trans-unit>
+            <trans-unit id="task.reminder.description">
+                <source>Sends reminder notifications to users at their scheduled times.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

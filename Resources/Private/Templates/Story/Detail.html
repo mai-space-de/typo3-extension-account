@@ -34,7 +34,7 @@
                         </div>
                     </f:if>
                     <div class="mai-story-detail__content">
-                        <f:format.nl2br>{story.content}</f:format.nl2br>
+                        <f:render.text record="{story}" field="content" />
                     </div>
                 </article>
             </f:then>

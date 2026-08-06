@@ -22,6 +22,8 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Attribute\Authorize;
+use TYPO3\CMS\Extbase\Attribute\RateLimit;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 
@@ -42,6 +44,7 @@ class AccountController extends AbstractActionController
         private readonly Context $context,
     ) {}
 
+    #[RateLimit(limit: 5, interval: '15 minutes')]
     public function loginAction(): ResponseInterface
     {
         $parsedBody = $this->request->getParsedBody() ?? [];
@@ -86,6 +89,7 @@ class AccountController extends AbstractActionController
         return $this->htmlResponse();
     }
 
+    #[RateLimit(limit: 3, interval: '1 hour')]
     public function registerAction(
         string $username = '',
         string $email = '',
@@ -154,6 +158,7 @@ class AccountController extends AbstractActionController
         return $this->htmlResponse();
     }
 
+    #[Authorize(requireLogin: true)]
     public function profileAction(): ResponseInterface
     {
         $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
@@ -172,6 +177,7 @@ class AccountController extends AbstractActionController
         return $this->htmlResponse();
     }
 
+    #[Authorize(requireLogin: true)]
     public function changePasswordAction(
         string $currentPassword,
         string $newPassword,
@@ -223,6 +229,7 @@ class AccountController extends AbstractActionController
         return $this->redirect('profile');
     }
 
+    #[Authorize(requireLogin: true)]
     public function interestsAction(): ResponseInterface
     {
         $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
@@ -251,6 +258,7 @@ class AccountController extends AbstractActionController
         return $this->htmlResponse();
     }
 
+    #[Authorize(requireLogin: true)]
     public function remindersAction(): ResponseInterface
     {
         $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
@@ -297,6 +305,7 @@ class AccountController extends AbstractActionController
         return $this->htmlResponse();
     }
 
+    #[Authorize(requireLogin: true)]
     public function newsletterOptInAction(): ResponseInterface
     {
         $feUserUid = (int) $this->context->getPropertyFromAspect('frontend.user', 'id');
