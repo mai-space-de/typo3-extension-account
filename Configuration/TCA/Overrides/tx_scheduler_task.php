@@ -2,27 +2,31 @@
 
 declare(strict_types=1);
 
-use TYPO3\CMS\Scheduler\Task\TableGarbageCollectionTask;
+use TYPO3\CMS\Core\Schema\Struct\SelectItem;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') or die();
 
-$GLOBALS['TCA']['tx_scheduler_task']['columns']['task_type']['config']['items'][] = [
-    'label' => 'LLL:EXT:mai_account/Resources/Private/Language/locallang.xlf:task.reminder.title',
-    'value' => \Maispace\MaiAccount\Task\ReminderTask::class,
-    'icon' => 'EXT:mai_account/Resources/Public/Icons/Extension.svg',
-    'group' => 'mai_account',
-];
-
-$GLOBALS['TCA']['tx_scheduler_task']['types'][\Maispace\MaiAccount\Task\ReminderTask::class] = [
-    'showitem' => '
-        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-            task_type,
+ExtensionManagementUtility::addRecordType(
+    new SelectItem(
+        type: 'select',
+        label: 'LLL:EXT:mai_account/Resources/Private/Language/locallang.xlf:task.reminder.title',
+        value: \Maispace\MaiAccount\Task\ReminderTask::class,
+        icon: 'EXT:mai_account/Resources/Public/Icons/Extension.svg',
+    ),
+    '
+        --div--;core.form.tabs:general,
+            tasktype,
+            task_group,
             description,
-        --div--;LLL:EXT:scheduler/Resources/Private/Language/locallang.xlf:tab.execution,
-            execution,
-            execution_period,
-        --div--;LLL:EXT:scheduler/Resources/Private/Language/locallang.xlf:tab.email,
-            email_on_completion,
-            email_on_failure,
+            parameters,
+        --div--;core.form.tabs:timing,
+            --palette--;;execution,
+        --div--;core.form.tabs:access,
+            disable,
+        --div--;core.form.tabs:extended,
     ',
-];
+    [],
+    '',
+    'tx_scheduler_task'
+);
