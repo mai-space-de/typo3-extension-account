@@ -9,6 +9,7 @@ use Maispace\MaiAccount\Domain\Model\Reminder;
 use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
 use Maispace\MaiAccount\Domain\Repository\InterestRepository;
 use Maispace\MaiAccount\Domain\Repository\ReminderRepository;
+use Maispace\MaiAccount\Event\LoginFailedEvent;
 use Maispace\MaiAccount\Service\AccountMailer;
 use Maispace\MaiAccount\Service\RegistrationService;
 use Maispace\MaiAccount\Support\LoginFormSupport;
@@ -65,8 +66,13 @@ class AccountController extends AbstractActionController
             return $this->htmlResponse();
         }
 
+        $loginFailed = LoginFormSupport::hasLoginFailed($loginType, $isLoggedIn);
+        if ($loginFailed) {
+            $this->eventDispatcher->dispatch(new LoginFailedEvent($this->request));
+        }
+
         $this->view->assignMultiple([
-            'loginError' => LoginFormSupport::hasLoginFailed($loginType, $isLoggedIn),
+            'loginError' => $loginFailed,
             'requestToken' => $this->createLoginRequestToken(),
         ]);
 
