@@ -12,7 +12,7 @@ $lang = Helper::localLangHelperFactory('mai_account', 'Default/locallang_tca.xlf
 return (new Table($lang('table.tx_maiaccount_interest')))
     ->setDefaultConfig()
     ->setLabel('title')
-    ->setIconFile('EXT:mai_base/Resources/Public/Icons/generic_table.svg')
+    ->setIconFile('EXT:mai_base/Resources/Public/Icons/all-icons/interface-favorite-heart--reward-social-rating-media-heart-it-like-favorite-love--Streamline-Core.svg')
     ->setSortingField()
     ->addColumn(
         'title',

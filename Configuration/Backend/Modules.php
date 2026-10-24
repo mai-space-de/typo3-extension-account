@@ -10,7 +10,7 @@ return [
         'access' => 'user',
         'workspaces' => 'online',
         'path' => '/module/mai-stories',
-        'iconIdentifier' => 'mai-backend-module',
+        'iconIdentifier' => 'mai-account-module',
         'labels' => 'LLL:EXT:mai_account/Resources/Private/Language/locallang_mod.xlf',
         'extensionName' => 'MaiAccount',
         'controllerActions' => [
