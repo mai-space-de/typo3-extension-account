@@ -41,10 +41,15 @@ if (ExtensionManagementUtility::isLoaded('mai_member')) {
     (new Field('fe_users', 'tx_maiaccount_member_uid', $lang('fe_users.tx_maiaccount_member_uid')))
         ->setConfig([
             'type' => 'group',
-            'allowed' => 'tx_maimember_member',
+            'allowed' => 'pages',
             'size' => 1,
             'maxitems' => 1,
             'minitems' => 0,
+            'suggestOptions' => [
+                'default' => [
+                    'additionalSearchFields' => 'title,tx_maimember_first_name,tx_maimember_last_name',
+                ],
+            ],
         ])
         ->registerField();
 }
