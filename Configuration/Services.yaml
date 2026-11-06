@@ -24,3 +24,21 @@ services:
 
   Maispace\MaiAccount\Service\PasswordResetLogService:
     public: true
+
+  dashboard.widget.maiAccountManual:
+    class: 'ProudNerds\PnBackendManual\Widgets\ManualWidget'
+    arguments:
+      $options:
+        file: 'EXT:mai_account/Resources/Private/Manual/Manual.md'
+        numbered: true
+        contentsDepth: 2
+        printButton: true
+    tags:
+      - name: dashboard.widget
+        identifier: 'maiAccountManual'
+        groupNames: 'documentation'
+        title: 'Handbuch: Benutzerkonto'
+        description: 'Kurze Anleitung zu Konten, Profilen und der Story-Moderation.'
+        iconIdentifier: 'content-book'
+        height: 'medium'
+        width: 'medium'
