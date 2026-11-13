@@ -107,6 +107,12 @@ class AccountController extends AbstractActionController
             return $this->htmlResponse();
         }
 
+        if (!$this->isCaptchaValid()) {
+            $this->flashCaptchaError();
+
+            return $this->redirect('register');
+        }
+
         $username = trim($username);
         $email = trim($email);
         $firstName = trim($firstName);
