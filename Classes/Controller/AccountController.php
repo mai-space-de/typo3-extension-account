@@ -10,6 +10,7 @@ use Maispace\MaiAccount\Domain\Repository\FrontendUserRepository;
 use Maispace\MaiAccount\Domain\Repository\InterestRepository;
 use Maispace\MaiAccount\Domain\Repository\ReminderRepository;
 use Maispace\MaiAccount\Event\LoginFailedEvent;
+use Maispace\MaiAccount\Middleware\LoginCaptchaMiddleware;
 use Maispace\MaiAccount\Service\AccountMailer;
 use Maispace\MaiAccount\Service\RegistrationService;
 use Maispace\MaiAccount\Support\LoginFormSupport;
@@ -73,6 +74,7 @@ class AccountController extends AbstractActionController
 
         $this->view->assignMultiple([
             'loginError' => $loginFailed,
+            'captchaError' => $this->request->getAttribute(LoginCaptchaMiddleware::FAILED_ATTRIBUTE, false) === true,
             'requestToken' => $this->createLoginRequestToken(),
         ]);
 

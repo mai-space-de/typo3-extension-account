@@ -41,6 +41,13 @@
                             </p>
                         </div>
                     </f:if>
+                    <f:if condition="{captchaError}">
+                        <div class="mai-account-login__errors" role="alert" data-testid="login-captcha-error">
+                            <p class="mai-account-login__error">
+                                <f:translate key="LLL:EXT:mai_base/Resources/Private/Language/locallang.xlf:captcha.failed"/>
+                            </p>
+                        </div>
+                    </f:if>
                     <f:form action="login" fieldNamePrefix="" method="post" requestToken="{requestToken}" data-testid="login-form" spellcheck="false" class="form mai-account-login__form">
                         <div class="form-field">
                             <label for="tx-maiaccount-login-username"><f:translate key="login.username" extensionName="mai_account" default="Username"/></label>
@@ -51,6 +58,7 @@
                             <f:form.password id="tx-maiaccount-login-password" name="pass" required="true" autocomplete="current-password"/>
                         </div>
                         <f:form.hidden name="logintype" value="login"/>
+                        <captcha:field />
                         <div class="form-actions">
                             <button type="submit" class="button button-block">
                                 <f:translate key="account.login" extensionName="mai_account" default="Login"/>
